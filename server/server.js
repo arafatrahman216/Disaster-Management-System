@@ -29,7 +29,7 @@ io.on("connection", (socket) => {
     socket.on('disconnect', () => console.log('User disconnected'));
 }
 );
-
+ 
 //MongoDB Connection
 const { run, getCollection, closeConnection } = require('./db/connect');
 
@@ -44,6 +44,9 @@ const PORT =  process.env.PORT || 5000;
 server.listen(PORT, () => {
     const result = run();
     if (result) console.log("Connected to MongoDB");
-    else console.log("Error occurred while connecting to MongoDB");
+    else {
+        console.log("Error occurred while connecting to MongoDB");
+        closeConnection();
+    }
     console.log('Server is running on port '+PORT);
 });

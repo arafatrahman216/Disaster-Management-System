@@ -1,14 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {
-    run, getCollection, closeConnection
-} = require('../db/connect');
+const { getCollections } = require('../controllers/Home/HomeController');
 
-
-router.get('/', async (req, res) => {
-    const collection = await getCollection('User');
-    console.log(collection);
-    res.json({ message: 'hehe' });
-});
+router.get('/', getCollections );
 
 module.exports = router;
