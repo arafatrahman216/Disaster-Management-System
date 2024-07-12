@@ -1,0 +1,1 @@
+this folder will contain the logical functions that will be used in the routes. The functions will be used to interact with the database and return the data to the client.
