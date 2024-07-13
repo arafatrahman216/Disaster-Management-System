@@ -10,7 +10,7 @@ const client = new MongoClient(uri, {
     }
   });
 
-  var db = null;
+  var db = null; 
 
   async function run() {
     try {
