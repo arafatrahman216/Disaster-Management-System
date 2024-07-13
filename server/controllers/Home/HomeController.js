@@ -2,7 +2,7 @@ const {
     getCollection
 } = require('../../db/connect');
 
-const User = require('../../models/UserTable');
+const User = require('../../models/User');
 
 const getCollections = async (req, res) => {
     const collection = await User.find({})
