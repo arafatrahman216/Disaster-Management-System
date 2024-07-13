@@ -4,9 +4,10 @@ import './App.css';
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header />
       <Main />
-      <Footer />
+      <Footer /> */}
+      <div>Make header main footer </div>
     </>
   );
 }
