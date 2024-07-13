@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import { AllRoutes } from './routes/AllRoutes';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       {/* <Header />
       <Main />
       <Footer /> */}
-      <div>Make header main footer </div>
+      < AllRoutes />
     </>
   );
 }
