@@ -17,10 +17,6 @@ const emergencyContactSchema = new mongoose.Schema({
         type: Integer,
         required: true
     },
-    address: {
-        type: String,
-        required: true
-    },
     phone: {
         type: String,
         required: true

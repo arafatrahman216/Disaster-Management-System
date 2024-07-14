@@ -13,6 +13,9 @@ const volunteerTaskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    Volunteer: {
+        ID: [Integer]  // first name woulbe be the the leader name for particular volunteer task
+    },
     IncidentID: {
         type: Interger,
         required: true
@@ -24,7 +27,8 @@ const volunteerTaskSchema = new mongoose.Schema({
     },
     AssignedDate: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     DateCompleted: {
         type: Date

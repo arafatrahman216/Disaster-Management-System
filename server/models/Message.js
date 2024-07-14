@@ -15,15 +15,12 @@ const messageSchema = new mongoose.Schema({
     },
     Content: {
         type: String,
-        required: true
-    },
-    CreationDate: {
-        type: Date,
-        required: true
+        required: true,
     },
     CreationTime: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     }
 });
 
