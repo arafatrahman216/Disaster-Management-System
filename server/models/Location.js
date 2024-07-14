@@ -5,6 +5,12 @@ const locationSchema = new mongoose.Schema({
         type: Integer,
         required: true
     },
+
+    IncidentID: {
+        type: [Integer],
+        required: true
+    },
+    
     Latitude: {
         type: Double,
         required: true

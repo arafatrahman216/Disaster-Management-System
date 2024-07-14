@@ -5,6 +5,12 @@ const communitySchema = new mongoose.Schema({
         type: Integer,
         required: true
     },
+
+    Users: {
+        type: [Integer],
+        required: true
+    },
+
     Name: {
         type: String,
         required: true
@@ -23,7 +29,8 @@ const communitySchema = new mongoose.Schema({
     },
     DateCreated: {
         type: Date,
-        required: true
+        required: true , 
+        default: Date.now
     }
 });
 

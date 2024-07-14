@@ -5,6 +5,20 @@ const incidentSchema = new mongoose.Schema({
         type: Integer,
         required: true
     },
+    Volunteers: {
+        type: [Integer]
+    },
+
+    AffectedIndividual : {
+        type: [Integer]
+    },
+
+    ApproximateaffectedCount : {
+        type: Integer,
+        required: true,
+        default: 0
+    },
+
     LocationID: {
         type: Integer,
         required: true
@@ -28,7 +42,8 @@ const incidentSchema = new mongoose.Schema({
     },
     DateReported: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     Urgency: {
         type: String,
@@ -37,6 +52,8 @@ const incidentSchema = new mongoose.Schema({
     },
     Status: {
         type: String,
+        enum: ['Running', 'Expired'],
+        default: 'Running',
         required: true
     }
 });
