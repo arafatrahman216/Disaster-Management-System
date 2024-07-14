@@ -3,12 +3,24 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
 
     UserID: {
-        type: Integer,
+        type: Number,
         require: true
     },
     Name: {
         type: String,
         required: [true,"Name must be provided"] ,
+    },
+    Email: {
+        type: String,
+        required: [true, "Email must be provided"],
+        unique: true,
+        validate: {
+            validator: function(value) {
+                // Email must be valid
+                return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(value);
+            },
+            message: 'Email must be valid'
+        }
     },
     Password: {
         type: String,
@@ -39,7 +51,7 @@ const UserSchema = new mongoose.Schema({
         required: [true,"Availability must be provided"]
     },
     Community: {
-        type: [Number], // array of integers
+        type: [Number], // array of Numbers
     },
     CreationTime: {
         type: Date,

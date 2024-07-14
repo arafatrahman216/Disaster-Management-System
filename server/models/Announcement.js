@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const announcementSchema = new mongoose.Schema({
     AnnouncementID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Content: {
@@ -10,7 +10,7 @@ const announcementSchema = new mongoose.Schema({
         required: true
     },
     CreatedBy: {
-        type: Integer,
+        type: Number,
         required: true
     },
     CreationDate: {
@@ -19,7 +19,7 @@ const announcementSchema = new mongoose.Schema({
         default: Date.now
     },
     CommunityID: {
-        type: Integer,
+        type: Number,
         required: false
     },
     Urgency: {

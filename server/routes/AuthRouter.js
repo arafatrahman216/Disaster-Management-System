@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const {register , login} = require('../controllers/Authentication');
 
-router.get('/login', async (req, res) => {
-    res.json({ message: 'Login' });
-});
+router.post('/login', login) 
 
-router.get('/register', async (req, res) => {
-    res.json({ message: 'Register' });
-});
+router.post('/register', register)
 
 module.exports = router;

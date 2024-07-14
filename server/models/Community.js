@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const communitySchema = new mongoose.Schema({
     ComID: {
-        type: Integer,
+        type: Number,
         required: true
     },
 
     Users: {
-        type: [Integer],
+        type: [Number],
         required: true
     },
 
@@ -16,15 +16,15 @@ const communitySchema = new mongoose.Schema({
         required: true
     },
     LocationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Leader: {
-        type: Integer,
+        type: Number,
         required: true
     },
     CreatedBy: {
-        type: Integer,
+        type: Number,
         required: true
     },
     DateCreated: {

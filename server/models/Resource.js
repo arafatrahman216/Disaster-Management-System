@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const resourceSchema = new mongoose.Schema({
     ResourceID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Name: {
@@ -10,11 +10,11 @@ const resourceSchema = new mongoose.Schema({
         required: true
     },
     Quantity: {
-        type: Double,
+        type: Number,
         required: true
     },
     LocationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Status: {

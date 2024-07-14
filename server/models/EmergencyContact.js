@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const emergencyContactSchema = new mongoose.Schema({
     contactID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     name: {
@@ -14,7 +14,7 @@ const emergencyContactSchema = new mongoose.Schema({
         required: true
     },
     locationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     phone: {

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const helpCenterSchema = new mongoose.Schema({
     CenterID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Name: {
@@ -15,7 +15,7 @@ const helpCenterSchema = new mongoose.Schema({
         required: true
     },
     LocationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Phone: {
@@ -25,11 +25,11 @@ const helpCenterSchema = new mongoose.Schema({
         maxlength: 10
     },
     Capacity: {
-        type: Integer,
+        type: Number,
         required: true
     },
     BookedSeats: {
-        type: Integer,
+        type: Number,
         required: true
     }
 });
