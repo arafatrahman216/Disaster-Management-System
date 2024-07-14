@@ -15,11 +15,8 @@ const announcementSchema = new mongoose.Schema({
     },
     CreationDate: {
         type: Date,
-        required: true
-    },
-    CreationTime: {
-        type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     CommunityID: {
         type: Integer,

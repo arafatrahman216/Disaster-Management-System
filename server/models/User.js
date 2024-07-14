@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    
+
+    UserID: {
+        type: Integer,
+        require: true
+    },
     Name: {
         type: String,
         required: [true,"Name must be provided"]
@@ -11,7 +15,7 @@ const UserSchema = new mongoose.Schema({
         required: [true,"Email must be provided"]
     },
     Phone: {
-        type: String,
+        type: [String], 
         required: [true,"Phone must be provided"],
         validate: {
             validator: function(value) {
@@ -36,7 +40,15 @@ const UserSchema = new mongoose.Schema({
     Available: {
         type : Boolean,
         required: [true,"Availability must be provided"]
+    },
+    Community: {
+        type: [Number], // array of integers
+    },
+    CreationTime: {
+        type: Date,
+        default: Date.now,
+        required: true
     }
-})
+},);
 
 module.exports = mongoose.model('User', UserSchema);

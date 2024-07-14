@@ -9,12 +9,8 @@ const resourceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Type: {
-        type: String,
-        required: true
-    },
     Quantity: {
-        type: Integer,
+        type: Double,
         required: true
     },
     LocationID: {
