@@ -8,20 +8,17 @@ const UserSchema = new mongoose.Schema({
     },
     Name: {
         type: String,
-        required: [true,"Name must be provided"]
+        required: [true,"Name must be provided"] ,
     },
-    Email: {
+    Password: {
         type: String,
-        required: [true,"Email must be provided"]
-    },
-    Phone: {
-        type: [String], 
-        required: [true,"Phone must be provided"],
+        required: [true, "Password must be provided"],
         validate: {
             validator: function(value) {
+                // Phone number must contain exactly 10 digits
                 return /^\d{10}$/.test(value);
             },
-            message: 'Phone must be a 10-digit number'
+            message: 'Phone number must contain exactly 10 digits'
         }
     },
     Address: {
