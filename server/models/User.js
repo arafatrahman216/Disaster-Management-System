@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
 
     UserID: {
         type: Number,
-        require: true
+        required: true
     },
     Name: {
         type: String,
@@ -22,9 +22,9 @@ const UserSchema = new mongoose.Schema({
             message: 'Email must be valid'
         }
     },
-    Password: {
+    Phone: {
         type: String,
-        required: [true, "Password must be provided"],
+        required: [true, "Phone Number must be provided"],
         validate: {
             validator: function(value) {
                 // Phone number must contain exactly 10 digits
@@ -33,6 +33,19 @@ const UserSchema = new mongoose.Schema({
             message: 'Phone number must contain exactly 10 digits'
         }
     },
+
+    Password: {
+        type: String,
+        required: [true, "Password must be provided"],
+        validate: {
+            validator: function(value) {
+                // Password must contain at least 8 characters, including at least one letter, one number, and one special character
+                return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
+            },
+            message: 'Password must contain at least 8 characters, including at least one letter, one number, and one special character'
+        }
+    },
+    
     Address: {
         type: String,
         required: [true,"Address must be provided"]
@@ -59,5 +72,7 @@ const UserSchema = new mongoose.Schema({
         required: true
     }
 },);
+
+UserSchema.index({ Email: 1 });
 
 module.exports = mongoose.model('User', UserSchema);

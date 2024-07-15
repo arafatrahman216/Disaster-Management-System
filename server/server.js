@@ -18,6 +18,8 @@ const { Server} = require('socket.io');
 const server= http.createServer(app);
 const io = new Server( server, { cors : { origin : '*'} });
 
+const User = require('./models/User');
+
 io.on("connection", (socket) => {
     console.log('A user connected');
     socket.on('join_room', (data) => { //for private chat
@@ -35,6 +37,25 @@ const { run, getCollection, closeConnection } = require('./db/connect');
 
 //Routes imported from routes/index.js file
 const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
+
+app.post('/auth/login', async (req, res) => {
+    const { Email, Password } = req.body;
+    console.log("Buet")
+    try {
+        const options = { maxTimeMS: 30000 };
+        const user = await User.findOne({ Email } , null , options);
+        console.log("Hello")
+        if (user && user.Password === Password) {
+            res.status(200).json({ user });
+        } else {
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.log("Hi")
+        res.status(500).json({ error: error.message });
+    }
+    console.log("Hello6")
+});
 
 app.use('/', HomeRoute);
 app.use('/auth', AuthRouter);
