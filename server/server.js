@@ -41,8 +41,8 @@ app.use('/auth', AuthRouter);
 app.use('/community', CommunityRouter);
 
 const PORT =  process.env.PORT || 5000;
-server.listen(PORT, () => {
-    const result = run();
+server.listen(PORT, async () => {
+    const result = await run();
     if (result) console.log("Connected to MongoDB");
     else {
         console.log("Error occurred while connecting to MongoDB");

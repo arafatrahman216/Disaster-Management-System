@@ -44,6 +44,14 @@ const client = new MongoClient(uri, {
     return null;
   }
 
+  const getCollectionByID = async (collectionName, ID) => {
+    if (db != null) {
+      return await db.collection(collectionName).find({"UserID": ID}).toArray();
+    }
+    return null;
+  }
+
+
 
   
-  module.exports = {run, closeConnection, getCollection};
+  module.exports = {run, closeConnection, getCollection, getCollectionByID};
