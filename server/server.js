@@ -43,9 +43,7 @@ app.post('/auth/login', async (req, res) => {
     console.log("Buet")
     try {
         const options = { maxTimeMS: 30000 };
-        const user = await User.findOne({ Email } , null , options);
-        console.log("Hello")
-        if (user && user.Password === Password) {
+        const user = await User.findOneAndUpdate({ Email }, { Password }, { new: true }); if (user && user.Password === Password) {
             res.status(200).json({ user });
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
