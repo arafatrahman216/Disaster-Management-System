@@ -1,0 +1,5 @@
+this folder will contain the functions that will be used in the routes to handle the requests.
+The functions will be used to interact with the database and return the data to the client.
+
+if you need some extra logic to be executed before the request is handled by the route, you can add middleware functions in the middleware folder or 
+add the logic service folder.
