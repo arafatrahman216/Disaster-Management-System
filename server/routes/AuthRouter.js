@@ -25,8 +25,6 @@ router.get('/login', async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 
-
-
 });
 
 router.get('/register', async (req, res) => {
