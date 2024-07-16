@@ -19,6 +19,9 @@ const { Server} = require('socket.io');
 const server= http.createServer(app);
 const io = new Server( server, { cors : { origin : '*'} });
 
+const User = require('./models/User');
+const Test = require('./models/testing');
+
 io.on("connection", (socket) => {
     console.log('A user connected');
     socket.on('join_room', (data) => { //for private chat
