@@ -9,16 +9,17 @@ router.get('/login', async (req, res) => {
         UserID: 3,
         Password: 'hello.123',
         Name: 'hasib',
-        Email: 'hasib@gmail.com',
+        Email: 'hasib1@gmail.com',
         Phone: '1777777777',
         Address: 'Dhaka',
         UserType: ['affected'],
         Available: true,
-        Community : [1],
+        Community : [1]
     }
     );
     try {
         const user = await new_user.save();
+        
         res.json(user);
     } catch (error) {
         console.error(error);
