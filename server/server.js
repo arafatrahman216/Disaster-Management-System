@@ -19,6 +19,7 @@ const server= http.createServer(app);
 const io = new Server( server, { cors : { origin : '*'} });
 
 const User = require('./models/User');
+const Test = require('./models/testing');
 
 io.on("connection", (socket) => {
     console.log('A user connected');
@@ -38,30 +39,73 @@ const { run, getCollection, closeConnection } = require('./db/connect');
 //Routes imported from routes/index.js file
 const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
 
-app.post('/auth/login', async (req, res) => {
-    const { Email, Password } = req.body;
-    console.log("Buet")
+app.post('/auth/test', async (req, res) => {
+    const { testID , testName } = req.body;
+    const test1 = new Test({ testID , testName });
     try {
-        const options = { maxTimeMS: 30000 };
-        const user = await User.findOneAndUpdate({ Email }, { Password }, { new: true }); if (user && user.Password === Password) {
-            res.status(200).json({ user });
-        } else {
-            res.status(401).json({ error: 'Invalid credentials' });
-        }
+        const result = await Test.save();
+        res.status(201).json(result);
     } catch (error) {
-        console.log("Hi")
-        res.status(500).json({ error: error.message });
+        console.log(error);
+        res.status(500).json({ message: "Internal server error" });
     }
-    console.log("Hello6")
 });
+
+app.get('/auth/login', async (req, res) => {
+    const { Email, Password } = req.body;
+
+    console.log(req.body.email);
+    
+    try {
+        const user = await User.find({ Email });
+        if (!user) {
+            return res.status(400).json({ message: "Invalid email or password" });
+        }
+        
+        const isPasswordValid = await user.comparePassword(Password);
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: "Invalid email or password" });
+        }
+        
+        // Email and password are valid, proceed with authentication logic
+        // ...
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+app.get('/auth/login' , async (req, res) => {
+    const { Email, Password } = req.body;
+    try {
+        const user = await User.find({ Email
+        });
+        if (!user) {
+            return res.status(400).json({ message: "Invalid email or password" });
+        }
+        const isPasswordValid = await user.comparePassword(Password);
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: "Invalid email or password" });
+        }
+        // Email and password are valid, proceed with authentication logic
+        // ...
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+
 
 app.use('/', HomeRoute);
 app.use('/auth', AuthRouter);
 app.use('/community', CommunityRouter);
 
 const PORT =  process.env.PORT || 5000;
-server.listen(PORT, () => {
-    const result = run();
+server.listen(PORT, async () => {
+    const result = await run();
+    console.log(result);
     if (result) console.log("Connected to MongoDB");
     else {
         console.log("Error occurred while connecting to MongoDB");
