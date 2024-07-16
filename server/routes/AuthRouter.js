@@ -4,17 +4,18 @@ const router = express.Router();
 const User = require('../models/User');
 
 router.get('/login', async (req, res) => {
-
+    const user= await User.find({});
+    const id= user.length+1;
     const new_user = new User({
-        UserID: 3,
-        Password: 'hello.123',
-        Name: 'hasib',
-        Email: 'hasib1@gmail.com',
+        UserID: id,
+        Password: 'Hello.1234',
+        Name: 'hasib1234',
+        Email: `hasib21${id}@gmail.com`,
         Phone: '1777777777',
         Address: 'Dhaka',
-        UserType: ['affected'],
+        UserType: ['donor'],
         Available: true,
-        Community : [1]
+        Community : [1,2]
     }
     );
     try {
