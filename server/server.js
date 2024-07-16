@@ -34,6 +34,8 @@ io.on("connection", (socket) => {
 //Routes imported from routes/index.js file
 const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
 
+require('./middleware/auth')
+
 app.use('/', HomeRoute);
 app.use('/auth', AuthRouter);
 app.use('/community', CommunityRouter);
