@@ -1,0 +1,35 @@
+table {
+    width: 90%;
+    display:table;
+    margin-left: 30px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    text-align: center;
+    tr{
+        width: 100%;
+        border: 1px solid #ddd;
+        background-color: #f2f2f229;
+    }
+    th{
+        
+        border: 1px solid #ddd;
+        padding: 8px;
+        background-color: #f2f2f2;
+        
+    }
+    td{
+        border: 1px solid #ddd;
+        padding: 8px;
+        background-color: #f2f2f237;
+    }
+}
+
+
+
+.icon{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}

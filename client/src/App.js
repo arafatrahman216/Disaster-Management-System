@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import { AllRoutes } from './routes/AllRoutes';
 
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header />
       <Main />
-      <Footer />
+      <Footer /> */}
+      < AllRoutes />
     </>
   );
 }

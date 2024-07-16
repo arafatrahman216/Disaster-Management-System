@@ -1,26 +1,13 @@
-const {
-    getCollection
-} = require('../../db/connect');
+// const {
+//     getCollection, getCollectionByID
+// } = require('../../db/connect');
+const User = require('../../models/User');
+
+const { GetUserCommunity } = require('../../services/User/UserService');
 
 const getCollections = async (req, res) => {
     try {
-        const users = await getCollection('User'); 
-        const comms = await getCollection('Community');
-        var usercom = [];
-        for (var i = 0; i < users.length; i++) {
-            var temp = {
-                username: users[i].Name,
-                email: users[i].Email,
-                Community: []
-            }
-            comms.forEach(comm => {
-                if (comm.User.includes(users[i].UserID)) {
-                    temp.Community.push(comm.Name);
-                }
-            });
-            usercom.push(temp);
-        }
-        console.log(usercom);
+        const usercom = await User.find({});
         res.json({ message: 'hehe', user : usercom });
     } catch (error) {
         console.error("Error sending response:", error);
