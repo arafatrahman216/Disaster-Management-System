@@ -30,9 +30,6 @@ export const Home = () => {
         <h1 className='section-header'>Statistics </h1>
         <Statistics />
         <h1 className='section-header'>HeatMap of Incidents</h1>
-        <input type="number" placeholder="Longitude" onChange={(e)=>setLongitude(e.target.value)} />
-        <input type="number" placeholder="Latitude" onChange={(e)=>setLatitude(e.target.value)} />
-        
         <Map locations={locations} longitude={longitude} latitude={latitude} />
         <h1 className='section-header' onClick={()=> setItable(changeDisplay(Itable))}>
           Recent List of Incidents <img src={Arrow} className="icon" alt="arrow" /></h1> 
