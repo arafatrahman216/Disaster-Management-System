@@ -3,9 +3,10 @@
   }
   
   header {
-    background-color: #3498db;
+    background-color: #000000;
     color: white;
-    padding: 20px;
+    padding: 5px;
+    margin: 0 0 20px 0;
     text-align: center;
   }
   
@@ -56,4 +57,5 @@
 
   .community-nav ul li {
     padding: 3px;
+    border-radius: 5px;
   }

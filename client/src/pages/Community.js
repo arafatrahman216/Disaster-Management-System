@@ -6,49 +6,43 @@ import { useParams,
     Link
  } from 'react-router-dom';
 import { useState } from 'react';
+import { CommunityHome } from '../components/CommunityHome';
+import { useSearchParams } from 'react-router-dom';
 
 const Community = () => {
     const { id } = useParams();
-
+    const LeaderNum = '01735847466';
+    const [Num, setNum] = useState('017xxxxxxxx (click to reveal)');
     
   return (
     <div class="community-page">
   <header>
     <h1>Community Name</h1>
-    <Outlet />
+    
     <nav className='community-nav'>
       <ul>
-        <li><a href="/forums">Forums</a></li>
-        <li><a href="/chat">Chat</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#volunteer">Volunteer</a></li>
-        <li><a href="#alerts">Announcements</a></li>
+        <li><Link to={`/community/${id}`}>Community</Link></li>
+        <li><Link to={`/community/${id}/chat`}>Chat</Link></li>
+        <li><Link to={`/community/${id}/volunteers`}>Volunteer</Link></li>
+        <li><Link to={`/community/${id}/announcement`}>Announcements</Link></li>
       </ul>
     </nav>
   </header>
-
-  <section id="forums">
-    <h2>Discussion Forums</h2>
-  </section>
-
-  <section id="chat">
-    <h2>Real-Time Chat</h2>
-  </section>
-
-  <section id="volunteer">
-    <h2>Volunteer and Donation Opportunities</h2>
-  </section>
-
-  <section id="maps">
-    <h2>Interactive Maps</h2>
-  </section>
-
-  <section id="stories">
-    <h2>Success Stories and Testimonials</h2>
-  </section>
+  
+  <Outlet />
 
   <section id="contact">
     <h2>Contact and Support</h2>
+    <ul>
+      <li><span>Community Leader:</span> John Doe</li>
+      <li><span>Phone:</span><span onClick={()=>{
+        setNum(LeaderNum);
+      }}> {Num}</span></li>
+      <li><span>Email:</span>
+        <a href="mailto:arafat@gmail.com">Mail Leader
+          </a>
+      </li>
+    </ul>
   </section>
 </div>
 

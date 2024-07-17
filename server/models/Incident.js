@@ -2,25 +2,25 @@ const mongoose = require('mongoose');
 
 const incidentSchema = new mongoose.Schema({
     IncidentID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Volunteers: {
-        type: [Integer]
+        type: [Number]
     },
 
     AffectedIndividual : {
-        type: [Integer]
+        type: [Number]
     },
 
     ApproximateaffectedCount : {
-        type: Integer,
+        type: Number,
         required: true,
         default: 0
     },
 
     LocationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     IncidentType: {
@@ -33,11 +33,11 @@ const incidentSchema = new mongoose.Schema({
         required: true
     },
     CommunityID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     ReportedBy: {
-        type: Integer,
+        type: Number,
         required: true
     },
     DateReported: {

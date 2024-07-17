@@ -4,6 +4,8 @@ import { Home, Community } from '../pages';
 import { Header } from '../components/Header';
 import Map from '../components/Map';
 import  Footer  from '../components/Footer';
+import { CommunityHome } from '../components/CommunityHome';
+import CommunityForum from '../components/CommunityForum';
 
 export const AllRoutes = () => {
     const username= 'Arafat';
@@ -24,9 +26,9 @@ export const AllRoutes = () => {
             <Route path='*' element={<Navigate to='/' />} />
         </Route>
         <Route path='/community/:id' element={<Community/>} >
-            <Route path='' element={<h1>Community Home</h1>} />
+            <Route path='' element={< CommunityHome/>} />
             <Route path='chat' element={<h1>Chat</h1>} />
-            <Route path='announcement' element={<h1>Announcement</h1>} />
+            <Route path='announcement' element={ < CommunityForum />} />
             <Route path='*' element={<h1>Access Denied !</h1>} />
         </Route>
         <Route path='/communities' element={<h1>Communities</h1>} />

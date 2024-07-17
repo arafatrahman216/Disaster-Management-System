@@ -30,7 +30,7 @@ const Home = () => {
         <h1 className='section-header'>Statistics </h1>
         <Statistics />
         <h1 className='section-header'>HeatMap of Incidents</h1>
-        <Map locations={locations} longitude={longitude} latitude={latitude} />
+        <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={7} />
         <h1 className='section-header clickable' onClick={()=> setItable(changeDisplay(Itable))}>
           Recent List of Incidents <img src={Arrow} className="icon" alt="arrow" /></h1> 
         <table style={{
