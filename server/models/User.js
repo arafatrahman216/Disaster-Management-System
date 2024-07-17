@@ -3,27 +3,42 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
 
     UserID: {
-        type: Integer,
-        require: true
+        type: Number,
+        required: true
     },
     Name: {
         type: String,
-        required: [true,"Name must be provided"]
+        required: [true,"Name must be provided"] ,
     },
     Email: {
         type: String,
-        required: [true,"Email must be provided"]
-    },
-    Phone: {
-        type: [String], 
-        required: [true,"Phone must be provided"],
+        required: [true, "Email must be provided"],
+        unique: true,
         validate: {
             validator: function(value) {
-                return /^\d{10}$/.test(value);
+                // Email must be valid
+                return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(value);
             },
-            message: 'Phone must be a 10-digit number'
+            message: 'Email must be valid'
         }
     },
+    Phone: {
+        type: String,
+        required: [true, "Phone Number must be provided"],
+        validate: {
+            validator: function(value) {
+                // Phone number must contain exactly 10 digits
+                return /^\d{10}$/.test(value);
+            },
+            message: 'Phone number must contain exactly 10 digits'
+        }
+    },
+
+    Password: {
+        type: String,
+        required: [true, "Password must be provided"],
+    },
+    
     Address: {
         type: String,
         required: [true,"Address must be provided"]
@@ -42,7 +57,7 @@ const UserSchema = new mongoose.Schema({
         required: [true,"Availability must be provided"]
     },
     Community: {
-        type: [Number], // array of integers
+        type: [Number], // array of Numbers
     },
     CreationTime: {
         type: Date,

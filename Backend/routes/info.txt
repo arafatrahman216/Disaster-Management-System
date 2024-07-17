@@ -1,0 +1,5 @@
+after making a route js file in the routes folder, 
+please import the file in /routes/index.js and then export this file as well. 
+This will allow the server to use the routes that you have created.
+
+This is to ensure that the server.js file is not cluttered with all the routes and that the routes are organized in a more structured manner.
