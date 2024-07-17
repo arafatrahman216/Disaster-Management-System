@@ -6,7 +6,7 @@ import Statistics from '../components/Statistics';
 import { useState } from 'react';
 import Arrow from '../assets/images/arrows.png';
 
-export const Home = () => {
+const Home = () => {
 
   const [Itable, setItable] = useState('none');
   const [Etable, setEtable] = useState('none');
@@ -31,7 +31,7 @@ export const Home = () => {
         <Statistics />
         <h1 className='section-header'>HeatMap of Incidents</h1>
         <Map locations={locations} longitude={longitude} latitude={latitude} />
-        <h1 className='section-header' onClick={()=> setItable(changeDisplay(Itable))}>
+        <h1 className='section-header clickable' onClick={()=> setItable(changeDisplay(Itable))}>
           Recent List of Incidents <img src={Arrow} className="icon" alt="arrow" /></h1> 
         <table style={{
           display: Itable
@@ -65,7 +65,7 @@ export const Home = () => {
             <td>High</td>
           </tr> 
         </table>
-        <h1 className='section-header' onClick={()=>setEtable(changeDisplay(Etable))}> 
+        <h1 className='section-header clickable' onClick={()=>setEtable(changeDisplay(Etable))}> 
           Emergency-Contacts <img src={Arrow} className="icon" alt="arrow" /></h1>
         <table style={{
           display: Etable
@@ -100,3 +100,6 @@ export const Home = () => {
     </>
   )
 }
+
+
+export default Home;

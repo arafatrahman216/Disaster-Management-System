@@ -1,8 +1,9 @@
 
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home } from '../pages/Home';
+import { Home, Community } from '../pages';
 import { Header } from '../components/Header';
 import Map from '../components/Map';
+import  Footer  from '../components/Footer';
 
 export const AllRoutes = () => {
     const username= 'Arafat';
@@ -22,8 +23,16 @@ export const AllRoutes = () => {
             <Route path='register' element={<h1>Register</h1>} />
             <Route path='*' element={<Navigate to='/' />} />
         </Route>
-        <Route path='/community/chat' element={<h1>chat</h1>} />
+        <Route path='/community/:id' element={<Community/>} >
+            <Route path='' element={<h1>Community Home</h1>} />
+            <Route path='chat' element={<h1>Chat</h1>} />
+            <Route path='announcement' element={<h1>Announcement</h1>} />
+            <Route path='*' element={<h1>Access Denied !</h1>} />
+        </Route>
+        <Route path='/communities' element={<h1>Communities</h1>} />
         <Route path='*' element={<h1>404 ! Page Not Found</h1>} />
-       </Routes></>
+    </Routes>
+    <Footer />
+      </>
   )
 }

@@ -1,0 +1,59 @@
+.community-page {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  section h2 {
+    color: #2c3e50;
+  }
+  
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav ul li {
+      margin-bottom: 10px;
+    }
+  }
+  
+
+  .community-nav ul li:hover {
+    background-color: #dbdfe288;
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+  .community-nav ul li {
+    padding: 3px;
+  }
