@@ -3,6 +3,7 @@ const secretKey = 'HackCSBHackathon';
 const User = require('../models/User');
 
 const authenticationMiddleware = async (req, res, next) => {
+    console.log('Authentication middleware')
     const authHeader = req.headers.authorization
   
     if (!authHeader || !authHeader.startsWith('Bearer ')) {

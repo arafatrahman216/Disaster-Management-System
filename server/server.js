@@ -40,6 +40,7 @@ const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
 require('./middleware/auth')
 
 app.use('/', HomeRoute);
+console.log('HI');
 app.use('/auth', AuthRouter);
 app.use('/community', CommunityRouter);
 
