@@ -11,6 +11,10 @@ const communitySchema = new mongoose.Schema({
         required: true
     },
 
+    JoinRequests: {
+        type: [Number],
+    },
+
     Name: {
         type: String,
         required: true
