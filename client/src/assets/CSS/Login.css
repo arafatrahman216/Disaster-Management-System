@@ -1,0 +1,70 @@
+body{
+    font-family: sans-serif;
+    display: flex;
+    background-color: rgba(232, 237, 240, 0.733);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:100vw;
+}
+
+.login{
+    background-color: rgba(234, 248, 247, 0.733);
+    width:470px;
+    height:200px;
+    border:1px solid rgba(135, 135, 135, 0.687); 
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgb(216, 216, 216) ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.login div{
+    width:90%;
+    height:30px;
+    margin-bottom: 15px;
+    display:flex;
+}
+
+.login div input{
+    width:80%;
+    height:30px;
+    border-radius: 5px;
+    border:none;
+    padding-left: 16px;
+    font-size:15px;
+}
+
+.login div input:hover{
+    background-color: rgba(208, 206, 206, 0.622);
+}
+
+.login div span{
+    display:block;
+    width:20%;
+    font-size:19px;
+    padding-right:7px;
+}
+
+.login .loginTitle{
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.loginButton{
+    display:flex;
+    justify-content: center;
+}
+
+.loginButton button{
+    width:80px;
+    height:40px;
+    border-radius: 5px;
+    border:none;
+    background-color: rgb(151, 237, 208);
+}
+
+.loginButton button:hover{
+    background-color: rgb(69, 199, 156);
+}

@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.RegForm {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.RegTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    border-bottom:2px solid #020202;
+}
+
+ .RegForm div {
+    margin-bottom: 15px;
+}
+
+.RegForm label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.RegForm input[type="text"],
+.RegForm input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.RegForm input[type="text"]:focus,
+.RegForm input[type="password"]:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.RegForm .RegName,
+.RegForm .RegEmail,
+.RegForm .RegPhoneNumber,
+.RegForm .RegThana,
+.RegForm .RegDistrict,
+.RegForm .RegPassword {
+    display: flex;
+    flex-direction: column;
+}
+
+.RegForm input::placeholder {
+    color: #999;
+}
+
+.RegForm .RegButton{
+    display: flex;
+    align-items: center;
+}
+
+.RegButton{
+    height:50px;
+    width:100px;
+    font-size:20px;
+    font-weight: 700;
+    background-color: rgb(151, 237, 208);
+    border-radius: 5px;
+    border:none;
+}
+
+.RegButton:hover{
+    background-color: rgb(69, 199, 156);
+}
