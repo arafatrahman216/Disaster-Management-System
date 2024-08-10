@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Header } from '../components/Header';
 import Map from '../components/Map';
+import {Auth} from '../pages/Auth';
 
 export const AllRoutes = () => {
     const username= 'Arafat';
@@ -17,7 +18,7 @@ export const AllRoutes = () => {
     <Routes>
         <Route path="/" element={<Home /> } />
         <Route path="/map" element={<Map locations={locations} />} />
-        <Route path="/auth" element={<h1>Authorization</h1>} >
+        <Route path="/auth" element={<Auth/>} >
             <Route path='login' element={<h1>login</h1>} />8
             <Route path='register' element={<h1>Register</h1>} />
             <Route path='*' element={<Navigate to='/' />} />

@@ -19,7 +19,7 @@ export const Header= () => {
                 </li>
                 <li><Link>Guidelines</Link></li>
                 <li><Link>Donate</Link></li>
-                <li><button type="button" class="header-login">Login/Register</button></li>
+                <li><button type="button" class="header-login"><Link to="./auth">Login/Register</Link></button></li>
             </ul>
         </div>
         </div>

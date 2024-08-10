@@ -1,35 +1,36 @@
 body{
-    font-family: sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     display: flex;
     background-color: rgba(232, 237, 240, 0.733);
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width:100vw;
 }
 
 .login{
     background-color: rgba(234, 248, 247, 0.733);
-    width:470px;
-    height:200px;
+    width:550px;
     border:1px solid rgba(135, 135, 135, 0.687); 
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgb(216, 216, 216) ;
+    box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.131) ;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 5rem;
+    animation-name:slide;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
 }
 
 .login div{
     width:90%;
-    height:30px;
-    margin-bottom: 15px;
+    height:3rem;
+    margin-bottom: 1rem;
     display:flex;
 }
 
 .login div input{
     width:80%;
-    height:30px;
+    height:2.5rem;
     border-radius: 5px;
     border:none;
     padding-left: 16px;
@@ -38,6 +39,12 @@ body{
 
 .login div input:hover{
     background-color: rgba(208, 206, 206, 0.622);
+}
+
+.login div input:focus{
+    outline:none;
+    border:solid 2px rgb(74, 202, 159);
+    box-shadow: 0px 0px 7px 4px rgba(151, 237, 208, 0.65);
 }
 
 .login div span{
@@ -58,13 +65,27 @@ body{
 }
 
 .loginButton button{
-    width:80px;
-    height:40px;
+    font-size: 1.5rem;
+    padding:.75rem;
     border-radius: 5px;
     border:none;
     background-color: rgb(151, 237, 208);
+    transition:background-color 0.3s ease-out;
 }
 
 .loginButton button:hover{
     background-color: rgb(69, 199, 156);
+}
+
+.loginButton button:active{
+    color:white;
+}
+
+@keyframes slide {
+    from{
+        transform: translateX(-2000px);
+    }
+    to{
+        transform:translateX(0px);
+    }
 }
