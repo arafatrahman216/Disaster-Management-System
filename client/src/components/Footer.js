@@ -13,6 +13,7 @@ const Footer = () => {
           </Link>
         </div>
         <table className="footer-table">
+          <tbody>
             <tr>
                 <td className='footer-head'>
                   <Link to="/">Home</Link>
@@ -32,7 +33,7 @@ const Footer = () => {
             </tr>
             <tr>
                 <td>
-                  <Link to="/communities">Community</Link>
+                  <Link to="/communities">Communities</Link>
                 </td>
                 <td>
                   <Link to="/guidelines">Guidelines</Link>
@@ -42,12 +43,13 @@ const Footer = () => {
             </tr>
             <tr>
                 <td>
-                  <Link to="/announcements">Announcements</Link>
+                <Link to="/medicals">Hospitals and Shelters</Link>
                 </td>
-                <td></td>
+                <td><Link to="/announcements">Announcements</Link></td>
                 <td></td>
 
             </tr>
+          </tbody>
         </table>
 
         <div className="footer-copy">
@@ -58,4 +60,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export { Footer};

@@ -40,4 +40,4 @@ const Map = ({locations, longitude, latitude,defaultZoom }) => {
   );
 }
 
-export default Map;
+export {Map};

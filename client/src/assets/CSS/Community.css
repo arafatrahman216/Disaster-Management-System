@@ -2,7 +2,7 @@
     font-family: Arial, sans-serif;
   }
   
-  header {
+  .com-header {
     background-color: #000000;
     color: white;
     padding: 5px;
@@ -56,6 +56,13 @@
   }
 
   .community-nav ul li {
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+
+  .com-nav-active{
+    background-color: #dbdfe288;
     padding: 3px;
     border-radius: 5px;
   }

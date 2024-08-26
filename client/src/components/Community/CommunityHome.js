@@ -1,17 +1,17 @@
-import Map from '../components/Map';
-import '../assets/CSS/CommunityHome.css';
+import {Map} from '..';
+import '../../assets/CSS/CommunityHome.css';
 export const CommunityHome = () => {
   return (
     <>
         <section id="details">
         <h2 style={{ textDecoration: 'underline'}}>Community Details</h2>
         <ul>
-            <li><span> Incident Type:</span> Fire</li>
-            <li><span> Incident Details:</span> A fire caught in Banani DOHS</li>
-            <li><span>Number of Members:</span> 100</li>
+            <li className='p-28'><span> Incident Type:</span> Others</li>
+            <li><span> Incident Details:</span> Quota Movement 2024</li>
+            <li><span>Number of Members:</span> whole Bangladesh</li>
             <li><span>Community Leader: </span>John Doe </li>
-            <li><span >Community Location: </span> Dhaka, Bangladesh</li>
-            <li><span >Date Created: </span>01/01/2021</li>
+            <li><span >Community Location: </span>  Bangladesh</li>
+            <li><span >Date Created: </span>16/07/2024</li>
         </ul>
 
         </section>

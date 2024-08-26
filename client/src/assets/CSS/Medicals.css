@@ -1,0 +1,88 @@
+.filter-box{
+    width: 90%;
+    margin-left: 5%;
+    border : 2px solid rgb(0, 125, 227);
+    transition-duration: 10s;
+
+}
+
+.filter-box .filter-btn{
+    margin: 15px; 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 5px;  
+    /* border: 1px solid blue;  */
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: rgb(114, 182, 238);
+    font-weight:bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+
+.filter-box .filter-btn:hover{
+    background-color: rgb(7, 178, 245);
+    box-shadow: 10px black ;
+}
+
+.filter-box .filter-btn:active{
+    background-color: rgb(5, 143, 255);
+}
+
+.filter-options{
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: space-evenly;
+    
+}
+
+.filter-options .rating-filter{
+    padding: 10px;
+    
+    /* border: 1px solid black; */
+    
+}
+
+.filter-options .type-filter{
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+.filter-options button{
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: small;
+    margin: 5px;
+    background-color:rgb(241, 217, 4);
+    font-weight: 560;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.filter-options .active-btn{
+    background-color: rgb(8, 248, 248);
+    color: rgb(0, 0, 8);
+    border: 2px solid rgb(42, 3, 237);
+    
+}
+
+.med-table{
+    margin-bottom: 20px;
+    th{
+        background-color: rgb(158, 150, 164);
+        border-radius: 5px;
+    }
+    td{
+        background-color: rgb(6, 255, 255);
+        border-radius: 5px;
+    }
+    tr:hover{
+        td{
+            background-color: rgba(167, 173, 111, 0.975);
+        }
+    }
+    
+}

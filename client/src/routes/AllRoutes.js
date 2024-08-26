@@ -1,18 +1,18 @@
 
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home, Community } from '../pages';
-import { Header } from '../components/Header';
-import Map from '../components/Map';
-import  Footer  from '../components/Footer';
-import { CommunityHome } from '../components/CommunityHome';
-import CommunityForum from '../components/CommunityForum';
+import { Home, Community,MedicalHome } from '../pages';
+import { Header,Map,Footer,CommunityHome,
+  CommunityForum,CommunityVolunteers,
+  CommunityChat, Communities, Medicals
+} from '../components';
+
 
 export const AllRoutes = () => {
     const username= 'Arafat';
     const locations = [
-      { position: [23.7264, 90.3925], popupText: 'Marker 1' },
-      { position: [23.696789, 90.399721], popupText: 'Marker 2' },
-      { position: [23.704783, 90.398183], popupText: 'Marker 3' }
+      { position: [23.7264, 90.3925], popupText: 'Buet' },
+      { position: [23.696789, 90.399721], popupText: 'DU' },
+      { position: [23.704783, 90.398183], popupText: 'BD' }
     ];
   return (
     <>
@@ -27,11 +27,14 @@ export const AllRoutes = () => {
         </Route>
         <Route path='/community/:id' element={<Community/>} >
             <Route path='' element={< CommunityHome/>} />
-            <Route path='chat' element={<h1>Chat</h1>} />
+            <Route path='chat' element={<CommunityChat/>} />
             <Route path='announcement' element={ < CommunityForum />} />
+            <Route path='volunteers' element={ < CommunityVolunteers />} />
             <Route path='*' element={<h1>Access Denied !</h1>} />
         </Route>
-        <Route path='/communities' element={<h1>Communities</h1>} />
+        <Route path='/communities' element={<Communities/>} />
+        <Route path='/medicals' element={ <Medicals/>} />
+        <Route path='/medical/:id' element={ <MedicalHome/>} />
         <Route path='*' element={<h1>404 ! Page Not Found</h1>} />
     </Routes>
     <Footer />

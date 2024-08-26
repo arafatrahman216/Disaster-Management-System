@@ -44,6 +44,7 @@
   .topic-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     color: #2c3e50;
     margin-top: 10px;
@@ -54,9 +55,18 @@
     color: #7f8c8d;
   }
   
-  .topic-likes {
-    font-size: 14px;
-    color: #e74c3c;
+  .like-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .like-button:hover {
+    background-color: #c0392b;
   }
   
   .topic-replies {

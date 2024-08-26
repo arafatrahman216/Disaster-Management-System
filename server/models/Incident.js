@@ -43,7 +43,7 @@ const incidentSchema = new mongoose.Schema({
     DateReported: {
         type: Date,
         required: true,
-        default: Date.now
+        default: new Date().toISOString()+" " + (new Date().toLocaleTimeString())
     },
     Urgency: {
         type: String,
