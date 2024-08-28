@@ -1,0 +1,17 @@
+.incidents{
+    width:50%;
+    min-width: 700px;
+    display:flex;
+    flex-direction: column;
+    margin:4rem 0rem 4rem 0rem;
+}
+
+.incident{
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    margin:.5rem;
+    background-color: white;
+    border-radius: .5rem;
+}

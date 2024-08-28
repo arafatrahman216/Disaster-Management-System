@@ -4,6 +4,7 @@ import { Home } from '../pages/Home';
 import { Header } from '../components/Header';
 import Map from '../components/Map';
 import {Auth} from '../pages/Auth';
+import Admin from '../pages/Admin';
 
 export const AllRoutes = () => {
     const username= 'Arafat';
@@ -23,6 +24,7 @@ export const AllRoutes = () => {
             <Route path='register' element={<h1>Register</h1>} />
             <Route path='*' element={<Navigate to='/' />} />
         </Route>
+        <Route path="/profile/:id" element={<Admin/>}/>
         <Route path='/community/chat' element={<h1>chat</h1>} />
         <Route path='*' element={<h1>404 ! Page Not Found</h1>} />
        </Routes></>
