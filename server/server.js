@@ -20,7 +20,7 @@ const server= http.createServer(app);
 const io = new Server( server, { cors : { origin : '*'} });
 
 const User = require('./models/User');
-const Test = require('./models/testing');
+//const Test = require('./models/testing');
 
 io.on("connection", (socket) => {
     console.log('A user connected');
