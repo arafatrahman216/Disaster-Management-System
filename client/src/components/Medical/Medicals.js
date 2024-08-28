@@ -16,7 +16,8 @@ export const Medicals = () => {
             Hotline : "02-889-556-544",
             Email : "dmc@med.gov.bd",
             Rating : 4.9,
-            Type : "Hospital"
+            Type : "Hospital",
+            Seats : 1000
         },
         {
             ID : 2,
@@ -25,7 +26,8 @@ export const Medicals = () => {
             Hotline : "02-989-556-544",
             Email : "akmh@gmail.com",
             Rating : 4.5,
-            Type : "Hospital"
+            Type : "Hospital",
+            Seats : 500 
         },
         {
             ID : 3,
@@ -34,7 +36,8 @@ export const Medicals = () => {
             Hotline : "02-635-556-125",
             Email : "bhs@gmail.com",
             Rating : 4,
-            Type : "Shelter"
+            Type : "Shelter",
+            Seats : 200
         },
         {
             ID : 4,
@@ -43,7 +46,8 @@ export const Medicals = () => {
             Hotline : "02-638-556-125",
             Email : "phs@gmail.com",
             Rating : 3.5,
-            Type : "Shelter"
+            Type : "Shelter",
+            Seats : 150
         },
         {
             ID : 5,
@@ -52,7 +56,8 @@ export const Medicals = () => {
             Hotline : "02-989-256-887",
             Email : "sshmc@med.gov.bd",
             Rating : 4.3,
-            Type : "Hospital"
+            Type : "Hospital",
+            Seats : 800
         }
     ]);
     const [allMedical, setAllMedical] = useState(MedicalCenters); 
@@ -156,6 +161,7 @@ export const Medicals = () => {
                 <th>Email</th>
                 <th>Rating</th>
                 <th>Type</th>
+                <th>Seats</th>
             </tr>
             { 
                 MedicalCenters && MedicalCenters.map((meds)=>(
@@ -167,6 +173,7 @@ export const Medicals = () => {
                         <td>{meds.Email}</td>
                         <td>{meds.Rating}</td>
                         <td>{meds.Type}</td>
+                        <td>{meds.Seats}</td>
                     </tr>
                 ))
             }

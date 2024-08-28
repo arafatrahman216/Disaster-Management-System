@@ -9,8 +9,9 @@ import { Statistics } from "./Statistics";
 import { CommunityChat } from "./Community/CommunityChat";
 import { Communities } from "./Community/Communities";
 import { Medicals } from "./Medical/Medicals";
+import { Incidents } from "./Incidents";
 
 export {Header,Footer,CommunityForum,CommunityHome,
     CommunityVolunteers,Map,ImgSlider,Statistics,
-    CommunityChat,Communities, Medicals
+    CommunityChat,Communities, Medicals, Incidents
 }

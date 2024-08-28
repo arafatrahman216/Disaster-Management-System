@@ -71,18 +71,21 @@
 
 .med-table{
     margin-bottom: 20px;
-    th{
-        background-color: rgb(158, 150, 164);
-        border-radius: 5px;
-    }
-    td{
-        background-color: rgb(6, 255, 255);
-        border-radius: 5px;
+    tr{
+        width: 100%;
+        border: 1px solid #cece09;
+        background-color: #2ee35e;
     }
     tr:hover{
-        td{
-            background-color: rgba(167, 173, 111, 0.975);
-        }
+        background-color: #36f1d2;
+    }
+    
+    th{
+        filter:drop-shadow(1px 1px 1px #9b2828);
+        border: 1px solid #cece09;
+        padding: 8px;
+        background-color: #be6a57d6;
+        
     }
     
 }

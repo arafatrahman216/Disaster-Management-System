@@ -3,12 +3,16 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Home, Community,MedicalHome } from '../pages';
 import { Header,Map,Footer,CommunityHome,
   CommunityForum,CommunityVolunteers,
-  CommunityChat, Communities, Medicals
+  CommunityChat, Communities, Medicals ,Incidents
 } from '../components';
+import { useState } from 'react';
 
 
 export const AllRoutes = () => {
     const username= 'Arafat';
+    const [myLocation, setMyLocation] = useState([23.7264, 90.3925]);
+    
+
     const locations = [
       { position: [23.7264, 90.3925], popupText: 'Buet' },
       { position: [23.696789, 90.399721], popupText: 'DU' },
@@ -33,6 +37,7 @@ export const AllRoutes = () => {
             <Route path='*' element={<h1>Access Denied !</h1>} />
         </Route>
         <Route path='/communities' element={<Communities/>} />
+        <Route path='/incidents' element={<Incidents/>} />
         <Route path='/medicals' element={ <Medicals/>} />
         <Route path='/medical/:id' element={ <MedicalHome/>} />
         <Route path='*' element={<h1>404 ! Page Not Found</h1>} />
