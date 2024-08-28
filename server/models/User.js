@@ -37,7 +37,6 @@ const UserSchema = new mongoose.Schema({
     Password: {
         type: String,
         required: [true, "Password must be provided"],
-        
     },
     
     Address: {

@@ -2,21 +2,21 @@ const mongoose = require('mongoose');
 
 const locationSchema = new mongoose.Schema({
     LocationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
 
     IncidentID: {
-        type: [Integer],
+        type: [Number],
         required: true
     },
     
     Latitude: {
-        type: Double,
+        type: Number,
         required: true
     },
     Longitude: {
-        type: Double,
+        type: Number,
         required: true
     },
     Address: {

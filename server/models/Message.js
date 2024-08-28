@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema({
     MessageID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Sender: {
-        type: Integer,
+        type: Number,
         required: true
     },
     CommunityID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Content: {

@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({
     DonationID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Amount: {
-        type: Integer,
+        type: Number,
         required: true
     },
     DonatedBy: {
-        type: Integer,
+        type: Number,
         required: true
     },
     DateDonated: {
@@ -19,7 +19,7 @@ const donationSchema = new mongoose.Schema({
         default: Date.now
     },
     ResourceID: {
-        type: Integer,
+        type: Number,
         required: true
     }
 });

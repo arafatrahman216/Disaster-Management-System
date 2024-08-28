@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const volunteerTaskSchema = new mongoose.Schema({
     TaskID: {
-        type: Integer,
+        type: Number,
         required: true
     },
     Description: {
@@ -14,7 +14,7 @@ const volunteerTaskSchema = new mongoose.Schema({
         required: true
     },
     Volunteer: {
-        ID: [Integer]  // first name woulbe be the the leader name for particular volunteer task
+        ID: [Number]  // first name woulbe be the the leader name for particular volunteer task
     },
     IncidentID: {
         type: Interger,

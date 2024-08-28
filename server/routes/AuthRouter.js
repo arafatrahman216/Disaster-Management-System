@@ -1,37 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const {register , login} = require('../controllers/Authentication');
 
-const User = require('../models/User');
+router.post('/login', login) 
 
-router.get('/login', async (req, res) => {
-    const user= await User.find({});
-    const id= user.length+1;
-    const new_user = new User({
-        UserID: id,
-        Password: 'Hello.1234',
-        Name: 'hasib1234',
-        Email: `hasib21${id}@gmail.com`,
-        Phone: '1777777777',
-        Address: 'Dhaka',
-        UserType: ['donor'],
-        Available: true,
-        Community : [1,2]
-    }
-    );
-    try {
-        const user = await new_user.save();
-        
-        res.json(user);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Server error' });
-    }
 
-});
-
-router.get('/register', async (req, res) => {
-    res.json({ message: 'Register' });
-});
+router.post('/register', register)
 
 router.post('/login' , async (req, res) => {
     const { UserID} = req.body;
