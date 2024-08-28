@@ -1,0 +1,20 @@
+.action-btn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    margin-right: 10px;
+    display: block;
+    width: 90%;
+}
+
+.action-btn:hover{
+    background-color: #45a049;
+}
+
+.action-btn:active {
+    background-color: #2c812f;
+}
