@@ -24,19 +24,22 @@ const Statistics = () => {
               </div>
             </div>
           
-            <div class="col-md-6 col-lg-3" id='AP'>
+
+            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" id='AP'>
               <div class="box bg-success p-3">
                 <h3>5,154</h3>
                 <p class="lead">Affected People</p>
               </div>
             </div>
-            <div class="col-md-6 col-lg-3" id='PS'>
+
+            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" id='PS'>
               <div class="box bg-success p-3">
                 <h3>5,154</h3>
                 <p class="lead">Saved People</p>
               </div>
             </div>
-          <div class="col-md-6 col-lg-3" id='VC'>
+
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" id='VC'>
               <div class="box bg-success p-3">
                 <h3>5,154</h3>
                 <p class="lead">Volunteers</p>
@@ -48,4 +51,4 @@ const Statistics = () => {
 }
 
 
-export default Statistics;
+export {Statistics};

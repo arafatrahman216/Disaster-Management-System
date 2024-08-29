@@ -1,0 +1,56 @@
+const User = require('../models/User');
+
+const register = async( req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.create({ email, password });
+        res.status(201).json({ user });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+// const login = async( req, res) => {
+//     const { Email, Password } = req.body;
+//     try {
+//         const options = { maxTimeMS: 15000 };
+//         const user = await User.findOne({ Email } , null , options);
+//         if (user && user.Password === Password) {
+//             res.status(200).json({ user });
+//         } else {
+//             res.status(401).json({ error: 'Invalid credentials' });
+//         }
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// }
+
+// {
+//     "Email":"tahmidulislamomi09@gmail.com",
+//     "Password":"HackCSB@1"
+// }
+
+const login = async( req, res) => {
+
+    console.log("Hi");
+
+    // const { _id } = req.body;
+    // console.log(_id);
+    // try {
+    //     const options = { maxTimeMS: 15000 };
+    //     const user = await User.findOne({ _id } , null , options);
+    //     if (user) {
+    //         res.status(200).json({ user });
+    //     } else {
+    //         res.status(401).json({ error: 'Invalid credentials' });
+    //     }
+    // } catch (error) {
+    //     res.status(500).json({ error: error.message });
+    // }
+}
+
+
+module.exports = {
+    register,
+    login,
+}

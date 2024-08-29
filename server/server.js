@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static('build'));
 app.use(express.json());
 app.use(cors()); 
+require('./db/connect')
 
 //socket.io 
 const http = require('http');
@@ -30,9 +31,6 @@ io.on("connection", (socket) => {
 }
 );
  
-//MongoDB Connection
-const { run, getCollection, closeConnection } = require('./db/connect');
-
 //Routes imported from routes/index.js file
 const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
 
@@ -41,12 +39,9 @@ app.use('/auth', AuthRouter);
 app.use('/community', CommunityRouter);
 
 const PORT =  process.env.PORT || 5000;
+
+
 server.listen(PORT, () => {
-    const result = run();
-    if (result) console.log("Connected to MongoDB");
-    else {
-        console.log("Error occurred while connecting to MongoDB");
-        closeConnection();
-    }
-    console.log('Server is running on port '+PORT);
+
+    console.log(`Server is running on port-${PORT}`);
 });

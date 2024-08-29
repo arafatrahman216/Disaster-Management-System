@@ -1,21 +1,21 @@
 import React from 'react'
 import '../assets/CSS/Home.css';
-import { ImgSlider } from '../components/ImgSlider';
-import Map from '../components/Map';
-import Statistics from '../components/Statistics';
+
+import { ImgSlider,Map,Statistics } from '../components';
 import { useState } from 'react';
 import Arrow from '../assets/images/arrows.png';
 
-export const Home = () => {
+const Home = () => {
 
   const [Itable, setItable] = useState('none');
   const [Etable, setEtable] = useState('none');
   const [longitude, setLongitude] = useState(23.7264);
   const [latitude, setLatitude] = useState(90.3925);
   const locations = [
-    { position: [23.7264, 90.3925], popupText: 'Marker 1' },
-    { position: [23.696789, 90.399721], popupText: 'Marker 2' },
-    { position: [longitude, latitude], popupText: 'Marker 3' }
+
+    { position: [23.7264, 90.3925], popupText: 'BUET' },
+    { position: [23.696789, 90.399721], popupText: 'DU' },
+    { position: [longitude, latitude], popupText: 'Home' }
   ];
   const changeDisplay =(d)=> {
     if(d === 'table'){
@@ -30,8 +30,9 @@ export const Home = () => {
         <h1 className='section-header'>Statistics </h1>
         <Statistics />
         <h1 className='section-header'>HeatMap of Incidents</h1>
-        <Map locations={locations} longitude={longitude} latitude={latitude} />
-        <h1 className='section-header' onClick={()=> setItable(changeDisplay(Itable))}>
+
+        <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={7} />
+        <h1 className='section-header clickable' onClick={()=> setItable(changeDisplay(Itable))}>
           Recent List of Incidents <img src={Arrow} className="icon" alt="arrow" /></h1> 
         <table style={{
           display: Itable
@@ -65,7 +66,8 @@ export const Home = () => {
             <td>High</td>
           </tr> 
         </table>
-        <h1 className='section-header' onClick={()=>setEtable(changeDisplay(Etable))}> 
+
+        <h1 className='section-header clickable' onClick={()=>setEtable(changeDisplay(Etable))}> 
           Emergency-Contacts <img src={Arrow} className="icon" alt="arrow" /></h1>
         <table style={{
           display: Etable
@@ -100,3 +102,7 @@ export const Home = () => {
     </>
   )
 }
+
+
+
+export default Home;
