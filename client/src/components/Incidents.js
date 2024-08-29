@@ -52,6 +52,36 @@ export const Incidents = () => {
 
      }
 
+     const submitIncident = () => {
+        const incidentType = document.getElementById('IncidentType').value;
+        const incidentDate = document.getElementById('IncidentDate').value;
+        const incidentLocation = document.getElementById('IncidentLocation').value;
+        const incidentDescription = document.getElementById('IncidentDescription').value;
+        const affected = document.getElementById('Affected').value;
+        const incidentStatus = document.getElementById('IncidentStatus').value;
+        const urgency = document.getElementById('Urgency').value;
+        console.log(incidentType, incidentDate, incidentLocation, incidentDescription, affected, incidentStatus, urgency);
+      }
+
+
+
+     
+
+      const seelocationid=()=>{
+        var modal = document.getElementById("locationModal");
+        var span = document.getElementsByClassName("close-btn")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        }
+      }
+
+
      const setLocation=()=>{
         
         var ExLoc= document.getElementById("ExLoc").value +", " + document.getElementById("Village").value +", "+
@@ -62,7 +92,7 @@ export const Incidents = () => {
      }
 
   return (
-    <>
+    <div className='inc-container'>
 
         <h1 className='section-header' > Your Location </h1>
         <div className="location-box">
@@ -118,17 +148,122 @@ export const Incidents = () => {
             <input type="text" id="ExLoc" name="ExLoc"  />
             </div>
             
-            <button onClick={(e)=>{
+            <button className='submit-btn' onClick={(e)=>{
               e.preventDefault()
               setLocation();
             }} >Submit</button>
         </form>
     </div>
 
-    <div className="alert-box">
+    { myLocation &&
+      <div className="alert-box">
         <h1 >Alert !</h1>
         <p className='alert'>There are some incidents reported in your area. Please stay safe.</p>
     </div>
+    }
+
+    <form className='location-form' style={{display:"inline-block"}}>
+        <h1 className='section-header'>Report an Incident</h1>
+        <div className="form-item">
+            <label htmlFor="IncidentType">Incident Type</label>
+            <select id="IncidentType" name="IncidentType" style={{marginLeft:"66px"}}>
+                <option value="Flood">Flood</option>
+                <option value="Earthquake">Earthquake</option>
+                <option value="Fire">Fire</option>
+                <option value="Cyclone">Cyclone</option>
+                <option value="Accident">Accident</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div className="form-item">
+            <label htmlFor="IncidentDate" >Incident Date</label>
+            <input type="datetime-local" id="IncidentDate" name="IncidentDate" style={{marginLeft:"66px"}} />
+        </div>
+        <div className="form-item">
+            <label htmlFor="LocationID">Location ID</label>
+            <input type="number" id="LocationID" name="LocationID" style={{marginLeft:"82px"}} />
+            <button type='button' onClick={()=> seelocationid()} >See Location IDs
+            </button>
+          </div>
+        <div className="form-item">
+            
+            <label htmlFor="IncidentLocation">Incident Location</label>
+            <input type="text" id="IncidentLocation" name="IncidentLocation" style={{marginLeft:"34px"}} />
+            </div>
+            
+        <div className="form-item">
+            
+            <label htmlFor="IncidentDescription">Incident Description</label>
+            <input id="IncidentDescription" name="IncidentDescription" style={{marginLeft:"10px"}}  />
+        </div>
+        <div className="form-item">
+            <label htmlFor="Affected">Affected Individuals</label>
+            <input type="number" id="Affected" name="Affected" style={{marginLeft:"12px"}} />
+        </div>
+        <div className="form-item">
+            <label htmlFor="IncidentStatus">Incident Status</label>
+            <select id="IncidentStatus" name="IncidentStatus" style={{marginLeft:"51px"}}>
+              <option value="Running">Running</option>
+              <option value="Expired">Expired</option>
+            </select>
+        </div>
+        <div className="form-item">
+            <label htmlFor="Urgency">Urgency</label>  
+            <select id="Urgency" name="Urgency" style={{marginLeft:"107px"}}>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+        <button type='button' className='submit-btn' onClick={()=>{
+          submitIncident();
+          
+        }}>Submit</button>
+    </form>
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Location Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Location ID</th>
+                        <th>Address</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Dhaka</td>
+                        <td>90.412518</td>
+                        <td>23.810331</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Chattogram</td>
+                        <td>91.783182</td>
+                        <td>22.356852</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Rajshahi</td>
+                        <td>88.604200</td>
+                        <td>24.374524</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Khulna</td>
+                        <td>89.563970</td>
+                        <td>22.845641</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
     
     <h1 className='section-header'>Scan your area</h1>
         <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={12.5} />
@@ -168,6 +303,6 @@ export const Incidents = () => {
           </tr> 
         </table>
 
-            </>
+            </div>
   )
 }

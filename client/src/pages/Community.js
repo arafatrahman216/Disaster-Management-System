@@ -20,7 +20,8 @@ const Community = () => {
     const [Num, setNum] = useState('017xxxxxxxx (click to reveal)');
 
     const SetActive= (command)=>{
-      const navBars= ['.community-home','.community-chat','.community-volunteers','.community-announcement' ];
+      // const navBars= ['.community-home','.community-chat','.community-volunteers','.community-announcement' ];
+      const navBars= ['.community-home','.community-volunteers','.community-announcement' ];
       console.log(command);
       navBars.forEach((bars)=>{
         if (bars===command){
@@ -41,8 +42,8 @@ const Community = () => {
       <ul>
         <li className='community-home' onClick={()=> { SetActive('.community-home')}}>
           <Link to={`/community/${id}`}>Community</Link></li>
-        <li className='community-chat' onClick={()=> { SetActive('.community-chat')}}>
-          <Link to={`/community/${id}/chat`}>Chat</Link></li>
+        {/* <li className='community-chat' onClick={()=> { SetActive('.community-chat')}}>
+          <Link to={`/community/${id}/chat`}>Chat</Link></li> */}
         <li className='community-volunteers' onClick={()=> { SetActive('.community-volunteers')}}>
           <Link to={`/community/${id}/volunteers`}>Volunteer</Link></li>
         <li className='community-announcement' onClick={()=> { SetActive('.community-announcement')}}>

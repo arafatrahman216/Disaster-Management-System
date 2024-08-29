@@ -18,6 +18,7 @@ body{
     border-top: 2px solid rgb(240 171 252);
     position: relative;
     z-index: 1;
+    width: 100%;
 
 }
 
@@ -49,6 +50,7 @@ body{
 .header-navbar{
     display: flex;
     position: relative;
+    width: 100%;
     /* justify-content: space-around; */
     /* align-items: center; */
     background-color: rgb(0, 0, 0);

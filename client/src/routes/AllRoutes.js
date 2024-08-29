@@ -19,7 +19,7 @@ export const AllRoutes = () => {
 
     const [myLocation, setMyLocation] = useState([23.7264, 90.3925]);
     
-
+ 
     const locations = [
       { position: [23.7264, 90.3925], popupText: 'Buet' },
       { position: [23.696789, 90.399721], popupText: 'DU' },
@@ -30,14 +30,14 @@ export const AllRoutes = () => {
     <Header />
     <Routes>
 
-        <Route path="/" element={ loggedIn ? <Home /> : <Navigate to="/auth/login"/> } />
+        <Route path="/" element={  <Home />  } />
         <Route path="/map" element={<Map locations={locations} />} />
         <Route path="/auth" element={<Auth/>} >
             <Route path='login' element={<h1>login</h1>} />
             <Route path='register' element={<h1>Register</h1>} />
             <Route path='*' element={<Navigate to='/' />} />
         </Route>
-        <Route path='/community/:id' element={<Community/>} >
+        <Route path='/community/:id' element={ loggedIn ? <Community /> : <Navigate to="/auth/login"/>} >
             <Route path='' element={< CommunityHome/>} />
             <Route path='chat' element={<CommunityChat/>} />
             <Route path='announcement' element={ < CommunityForum />} />

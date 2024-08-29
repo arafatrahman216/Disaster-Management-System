@@ -10,7 +10,7 @@ export const Auth=()=>{
     function logForm(){
         console.log("hi from logForm");
         setlogin(true);
-    }
+    } 
 
     function regForm(){
         setlogin(false);

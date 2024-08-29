@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate} from 'react-router-dom'
 import "../../assets/CSS/Medicals.css"
 import { useSelector } from 'react-redux'
@@ -7,6 +7,16 @@ export const Medicals = () => {
     const isAdmin = useSelector(state => state.roleState.isAdmin);
     const [updateMed, setUpdateMed]= useState(false);
     console.log(isAdmin);
+    const [updateID, setUpdateID]= useState(0);
+
+    const CName = useRef();
+    const CAddress = useRef();
+    const CHotline = useRef();
+    const CEmail = useRef();
+    const CRating = useRef();
+    const CType = useRef();
+    const CSeats = useRef();
+
     
     const navigate = useNavigate();
     const linkMedical=(id)=>{
@@ -128,7 +138,40 @@ export const Medicals = () => {
         })
     }
 
+    const updateForm=(id)=>{
+        setUpdateID(id);
+        console.log(id);
+        var selectedMed= MedicalCenters.filter((meds)=> meds.ID===id);;
+        CName.current.value= selectedMed[0].Name;
+        CAddress.current.value= selectedMed[0].Address;
+        CHotline.current.value= selectedMed[0].Hotline;
+        CEmail.current.value= selectedMed[0].Email;
+        CRating.current.value= selectedMed[0].Rating;
+        CType.current.value= selectedMed[0].Type;
+        CSeats.current.value= selectedMed[0].Seats;
+
+    }
     
+    const updateMedical=(id)=>{
+        const updatedMed= {
+            ID : id,
+            Name : CName.current.value,
+            Address : CAddress.current.value,
+            Hotline : CHotline.current.value,
+            Email : CEmail.current.value,
+            Rating : CRating.current.value,
+            Type : CType.current.value,
+            Seats : CSeats.current.value
+        }
+        console.log(updatedMed);
+        const updatedMedicals= MedicalCenters.map((meds)=>{
+            if (meds.ID===id){
+                return updatedMed;
+            }
+            return meds;
+        })
+        setMedicalCenters(updatedMedicals);
+    }
 
     useEffect(()=>{
         controlFilter();
@@ -157,6 +200,24 @@ export const Medicals = () => {
                 </div>
             </div>
         </div>
+
+        
+            <form className="update-med" style={{ display : updateMed?"block": "none"}}>
+            <input type="text" placeholder="Enter Medical Center ID" readOnly value={updateID} />
+            <input type="text" placeholder="Enter Medical Center Name" ref={CName} />
+            <input type="text" placeholder="Enter Medical Center Address" ref={CAddress} />
+            <input type="text" placeholder="Enter Medical Center Hotline" ref={CHotline} />
+            <input type="text" placeholder="Enter Medical Center Email" ref={CEmail} />
+            <input type="text" placeholder="Enter Medical Center Rating" ref={CRating} />
+            <input type="text" placeholder="Enter Medical Center Type" ref={CType} />
+            <input type="number" placeholder="Enter Medical Center Seats" ref={CSeats} />
+            <button type='button' onClick={()=>{
+                setUpdateMed(false);
+            }} >Cancel</button>
+            <button type='button' onClick={()=> updateMedical(updateID)}>Update</button>
+        </form>
+        
+
         <table style={{
           display: 'table'
         }} className='med-table'>
@@ -186,7 +247,11 @@ export const Medicals = () => {
                         <td>{meds.Seats}</td>
                         {
                             isAdmin? <>
-                                <td><button> 
+                                <td><button onClick={()=>{
+                                    setUpdateMed(true);
+                                    
+                                    updateForm(meds.ID);
+                                }}> 
                                     update </button></td> 
                                 <td><button> 
                                     Delete </button></td> 
