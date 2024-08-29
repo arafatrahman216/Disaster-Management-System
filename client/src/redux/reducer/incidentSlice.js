@@ -13,6 +13,42 @@ const initialState={
             incidentName:"Drought",
             location:"Rajshahi",
             commId:"234"
+        },
+        {
+            incidentId:"3",
+            incidentName:"Drought2",
+            location:"Rajshahi2",
+            commId:null
+        },
+        {
+            incidentId:"4",
+            incidentName:"Drought3",
+            location:"Rajshahi3",
+            commId:"2346"
+        },
+        {
+            incidentId:"5",
+            incidentName:"Drought4",
+            location:"Rajshahi4",
+            commId:null
+        },
+        {
+            incidentId:"6",
+            incidentName:"Drought5",
+            location:"Rajshahi5",
+            commId:"2348"
+        },
+        {
+            incidentId:"7",
+            incidentName:"Drought6",
+            location:"Rajshahi6",
+            commId:null
+        },
+        {
+            incidentId:"8",
+            incidentName:"Drought7",
+            location:"Rajshahi7",
+            commId:"23455"
         }
     ]
 }

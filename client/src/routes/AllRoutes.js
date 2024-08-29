@@ -26,6 +26,7 @@ export const AllRoutes = () => {
         </Route>
         <Route path="/profile/:id" element={<Admin/>}/>
         <Route path='/community/chat' element={<h1>chat</h1>} />
+        <Route path='/community/:id' element={<h1>community</h1>}/>
         <Route path='*' element={<h1>404 ! Page Not Found</h1>} />
        </Routes></>
   )

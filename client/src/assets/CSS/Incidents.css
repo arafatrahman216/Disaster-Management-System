@@ -1,9 +1,33 @@
 .incidents{
-    width:50%;
+    width:80%;
     min-width: 700px;
+    height:400px;
     display:flex;
     flex-direction: column;
     margin:4rem 0rem 4rem 0rem;
+    overflow:auto;
+}
+
+.incidents::-webkit-scrollbar{
+    width:20px;
+    background:rgba(255, 255, 255, 0.235);
+}
+
+.incidents::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 255, 255, 0.558);
+    border-radius: 10px;
+}
+
+.incidents h3{
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    margin:.5rem;
+    background-color: rgba(255, 255, 255, 0.916);
+    border-radius: .5rem;
+    position:sticky;
+    top:.5rem;
 }
 
 .incident{
@@ -12,6 +36,40 @@
     padding-bottom: 1rem;
     padding-left: 2rem;
     margin:.5rem;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.583);
     border-radius: .5rem;
+    display:flex;
+    align-items: center;
+}
+
+.incident span{
+    display:inline-block;
+    width:70%;
+}
+
+.incident button{
+    display:block;
+    font-size: 1.25rem;
+    padding:.75rem;
+    border-radius:.5rem;
+    border:none;
+    margin:0px auto 0px auto;
+}
+
+.createCommunityButton{
+    background-color: rgba(54, 214, 54, 0.56);
+}
+
+.createCommunityButton:hover{
+    background-color: rgba(54, 214, 54, 0.796);
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.102);
+}
+
+.seeCommunityButton{
+    background-color: rgba(108, 108, 226, 0.669);
+}
+
+.seeCommunityButton:hover{
+    background-color: rgba(108, 108, 226, 0.812);
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.102);
 }

@@ -1,8 +1,9 @@
 import Statistics from "../components/Statistics";
 import { useState } from "react";
 import '../assets/CSS/Profile.css';
-import { useSelector } from "react-redux";
-import '../assets/CSS/Incidents.css'
+import { useSelector,useDispatch } from "react-redux";
+import '../assets/CSS/Incidents.css';
+import {useNavigate} from 'react-router-dom';
 
 const Admin=function (){
     let [Name,setName]=useState('aveerup');
@@ -17,6 +18,7 @@ const Admin=function (){
     let [profileInfoPhnNum,setProfileInfoPhnNum]=useState(false);
 
     let incidents=useSelector((state)=>state.incidentReducer.incidents);
+    let anouncements=useSelector((state)=>state.anouncementReducer.anouncements);
 
     const handleDoubleClick = (field) => {
         switch(field) {
@@ -42,6 +44,14 @@ const Admin=function (){
 
     const saveChanges=()=>{
 
+    }
+
+    const navigate=useNavigate();
+    const incidentButtonHandler=(e)=>{
+        console.log(e);
+        if(e.target.className==="seeCommunityButton"){
+            navigate(`../../community/${e.target.id}`)
+        }
     }
 
     return(
@@ -98,12 +108,17 @@ const Admin=function (){
             <Statistics />
 
             <div class="incidents">
+                <h3>Incidents</h3>
                 {
                     incidents.map(
                         (incident)=>
-                            <div id={incident.incidentId} class="incident">{incident.incidentName}</div>
+                            <div id={incident.incidentId} class="incident"><span>{incident.incidentName}</span><button id={incident.incidentId} class={incident.commId?"createCommunityButton":"seeCommunityButton"} onClick={(e)=>{console.log(e); incidentButtonHandler(e);}}>{incident.commId?"create community":"see community"}</button></div>
                     )
                 }
+            </div>
+
+            <div class="makeAnouncement">
+
             </div>
         </>
     );
