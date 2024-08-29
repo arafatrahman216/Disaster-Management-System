@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import '../assets/CSS/Incidents.css';
 import locicon from '../assets/images/location.png';
 import { Map } from '../components';
+import { useDispatch } from "react-redux";
+import { add, remove } from '../store/roleSlice';
+
 
 export const Incidents = () => {
+  const dispatch = useDispatch();
     const [DistrictIndex, setDistrictIndex] = useState(0);
     const Divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Mymensingh", "Rangpur"];
 
@@ -18,7 +22,6 @@ export const Incidents = () => {
     ["Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur", "Thakurgaon"]
     ];
 
-    const [Location,setLocation] = useState(null);
     const [locateOn,setlocateOn] = useState(false);
     const [myLocation, setMyLocation] = useState(null);
     
@@ -26,7 +29,7 @@ export const Incidents = () => {
     const [latitude, setLatitude] = useState(90.399721);
     const locations = [
       { position: [23.7264, 90.3925], popupText: 'BUET' },
-      { position: [longitude, latitude], popupText: 'Home' }
+      { position: [longitude, latitude], popupText: 'My location' }
     ];
 
     const getMyLocation = () => {
@@ -37,7 +40,25 @@ export const Incidents = () => {
 
      const iconClick= () => {
         if (locateOn) setlocateOn(false);
-        else setlocateOn(true);
+        else {
+          setMyLocation(null);
+          setlocateOn(true);
+        }
+        dispatch(add({
+          isAdmin : true,
+          role : "admin",
+          loggedIn : true 
+        }))
+
+     }
+
+     const setLocation=()=>{
+        
+        var ExLoc= document.getElementById("ExLoc").value +", " + document.getElementById("Village").value +", "+
+        document.getElementById("Union").value+", "+document.getElementById("Upazila").value+", "
+        + document.getElementById("District").value;
+        setMyLocation(ExLoc);
+        iconClick();
      }
 
   return (
@@ -46,45 +67,67 @@ export const Incidents = () => {
         <h1 className='section-header' > Your Location </h1>
         <div className="location-box">
             <div className="location-bar">
-              <img className='loc-icon' src={locicon} onClick={iconClick} alt="location icon" />             {
-                   myLocation? myLocation : <button className="locate" onClick={getMyLocation}>locate</button>
+              <img className='loc-icon' src={locicon} onClick={iconClick} alt="location icon" />             
+                <div className="locator">
+                {
+                  myLocation? myLocation : <button className="locate" onClick={getMyLocation}>locate</button>
                 }
-            </div>
+                </div>
+          </div>
         <form id='location-form' className='location-form' style={{ display : locateOn? "inline-block": "none"}} >
+            <div className="form-item">
             <label htmlFor="latitude">Latitude</label>
-            <input type="text" id="latitude" name="latitude" value="23.7264" />
+            <input type='number' id="latitude" name="latitude" onChange={(e)=> setLatitude(e.target.value)} style={{ marginLeft: "55px"}} />
+            </div>
+            <div className="form-item">
             <label htmlFor="longitude">Longitude</label>
-            <input type="text" id="longitude" name="longitude" value="90.3925" />
+            <input type="number" id="longitude" name="longitude" onChange={(e)=> setLongitude(e.target.value)} style={{ marginLeft: "40px"}} />
+            </div>
+            <div className="form-item">
             <label htmlFor="Division">Division</label>
             <select id="Division" name="Division" onChange={()=> {
-                setDistrictIndex(document.getElementById('Division').selectedIndex); 
-              }}>
+              setDistrictIndex(document.getElementById('Division').selectedIndex); 
+            }} style={{ marginLeft: "57px"}}>
                 {Divisions.map((division) => {
-                    return <option value={division}>{division}</option>
+                  return <option value={division}>{division}</option>
                 })}
             </select>
+                </div>
+                <div className="form-item">
             <label htmlFor="District">District</label>
-            <select id="District" name="District">
+            <select id="District" name="District" style={{ marginLeft: "64px"}}>
                 {Districts[DistrictIndex].map((district) =>{
-                    return <option value={district}>{district}</option>
-                  })}
+                  return <option value={district}>{district}</option>
+                })}
             </select>
+              </div>
+              <div className="form-item">
             <label htmlFor="Upazila">Upazila</label>
-            <input type="text" id="Upazila" name="Upazila" value="Dhaka" />
+            <input type="text" id="Upazila" name="Upazila" style={{ marginLeft: "63px"}} />
+            </div>
+            <div className="form-item">
             <label htmlFor="Union">Union</label>
-            <input type="text" id="Union" name="Union" value="Dhaka" />
+            <input type="text" id="Union" name="Union" style={{ marginLeft: "76px"}} />
+            </div>
+            <div className="form-item">
             <label htmlFor="Village">Village</label>
-            <input type="text" id="Village" name="Village" value="Dhaka" />
-            <label htmlFor="Exact Location">Exact Location</label>
-            <input type="text" id="Exact Location" name="Exact Location" value="Dhaka" />
+            <input type="text" id="Village" name="Village" style={{ marginLeft: "69px"}} />
+            </div>
+            <div className="form-item">
+            <label htmlFor="ExLoc">Exact Location</label>
+            <input type="text" id="ExLoc" name="ExLoc"  />
+            </div>
             
-            <input type="submit" value="Submit" />
+            <button onClick={(e)=>{
+              e.preventDefault()
+              setLocation();
+            }} >Submit</button>
         </form>
     </div>
 
     <div className="alert-box">
-        <h2>Alert</h2>
-        <p>There are some incidents reported in your area. Please stay safe.</p>
+        <h1 >Alert !</h1>
+        <p className='alert'>There are some incidents reported in your area. Please stay safe.</p>
     </div>
     
     <h1 className='section-header'>Scan your area</h1>

@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate} from 'react-router-dom'
 import "../../assets/CSS/Medicals.css"
+import { useSelector } from 'react-redux'
 
 export const Medicals = () => {
+    const isAdmin = useSelector(state => state.roleState.isAdmin);
+    const [updateMed, setUpdateMed]= useState(false);
+    console.log(isAdmin);
+    
     const navigate = useNavigate();
     const linkMedical=(id)=>{
         navigate(`/medical/${id}`);
@@ -123,6 +128,8 @@ export const Medicals = () => {
         })
     }
 
+    
+
     useEffect(()=>{
         controlFilter();
     },[rating,type])
@@ -162,6 +169,9 @@ export const Medicals = () => {
                 <th>Rating</th>
                 <th>Type</th>
                 <th>Seats</th>
+                {
+                    isAdmin? <><th>Update</th> <th>Delete</th></> : ""
+                }
             </tr>
             { 
                 MedicalCenters && MedicalCenters.map((meds)=>(
@@ -174,6 +184,14 @@ export const Medicals = () => {
                         <td>{meds.Rating}</td>
                         <td>{meds.Type}</td>
                         <td>{meds.Seats}</td>
+                        {
+                            isAdmin? <>
+                                <td><button> 
+                                    update </button></td> 
+                                <td><button> 
+                                    Delete </button></td> 
+                                </>: ""
+                        }
                     </tr>
                 ))
             }
