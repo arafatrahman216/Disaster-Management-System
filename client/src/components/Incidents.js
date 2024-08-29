@@ -3,7 +3,7 @@ import '../assets/CSS/Incidents.css';
 import locicon from '../assets/images/location.png';
 import { Map } from '../components';
 import { useDispatch } from "react-redux";
-import { add, remove } from '../store/roleSlice';
+import { changeRole, remove } from '../store/roleSlice';
 
 
 export const Incidents = () => {
@@ -44,7 +44,7 @@ export const Incidents = () => {
           setMyLocation(null);
           setlocateOn(true);
         }
-        dispatch(add({
+        dispatch(changeRole({
           isAdmin : true,
           role : "admin",
           loggedIn : true 

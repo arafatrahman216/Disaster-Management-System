@@ -27,7 +27,8 @@ export const AllRoutes = () => {
     <>
     <Header />
     <Routes>
-        <Route path="/" element={<Home /> } />
+      
+        <Route path="/" element={ loggedIn ? <Home /> : <Navigate to="/auth/login"/> } />
         <Route path="/map" element={<Map locations={locations} />} />
         <Route path="/auth" element={<h1>Authorization</h1>} >
             <Route path='login' element={<h1>login</h1>} />

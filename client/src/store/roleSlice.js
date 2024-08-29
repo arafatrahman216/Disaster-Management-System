@@ -4,14 +4,15 @@ const roleSlice= createSlice({
     initialState : {
         isAdmin : false,
         role : "none",
-        loggedIn : false
+        loggedIn : false,
     },
     reducers:{
-        add(state, action){
+        changeRole(state, action){
             const updatedAdmin= action.payload.isAdmin;
+            const updatedRole= action.payload.role;
+            const updatedLoggedIn= action.payload.loggedIn;
             console.log(action.payload);
-            return { ...state, isAdmin: updatedAdmin}
-            
+            return { ...state, isAdmin: updatedAdmin, role: updatedRole, loggedIn: updatedLoggedIn};
         },
         remove(){
 
@@ -19,5 +20,5 @@ const roleSlice= createSlice({
     }
 });
 
-export const { add, remove} = roleSlice.actions;
+export const { changeRole, remove} = roleSlice.actions;
 export const roleReducer = roleSlice.reducer;
