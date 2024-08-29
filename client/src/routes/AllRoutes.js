@@ -7,9 +7,14 @@ import { Header,Map,Footer,CommunityHome,
 } from '../components';
 import { useState } from 'react';
 
+import { useSelector } from 'react-redux';
+
 
 export const AllRoutes = () => {
     const username= 'Arafat';
+    const isAdmin = useSelector(state => state.roleState.isAdmin);
+    const loggedIn = useSelector(state => state.roleState.loggedIn);
+
     const [myLocation, setMyLocation] = useState([23.7264, 90.3925]);
     
 
@@ -25,7 +30,7 @@ export const AllRoutes = () => {
         <Route path="/" element={<Home /> } />
         <Route path="/map" element={<Map locations={locations} />} />
         <Route path="/auth" element={<h1>Authorization</h1>} >
-            <Route path='login' element={<h1>login</h1>} />8
+            <Route path='login' element={<h1>login</h1>} />
             <Route path='register' element={<h1>Register</h1>} />
             <Route path='*' element={<Navigate to='/' />} />
         </Route>

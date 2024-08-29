@@ -33,8 +33,79 @@
 }
 
 .loc-icon{
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+
+.location-bar{
+    justify-content: center;
+    justify-items: center;
+    display: flex;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:rgb(230, 230, 195);
+}
+
+.locator{
+    display: inline-flex;
+}
+
+.location-form{
+    border: 1px solid darkkhaki;
+    width: 90%;
+    margin: 20px;
+    margin-left: 5%;
+    /* margin-right: 5%; */
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    .form-item {
+        display: flexbox;
+
+    }
+    font-size: larger;
+}
+
+.location-form .form-item label{
+    margin-right: 5%;
+}
+
+button{
+    border-radius: 10px;
+    padding: 5px;
+}
+
+input{
+    border-radius: 5px;
+    height: 25px;
+    margin-top: 10px;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+select{
+    height: 25px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+option{
+    background-color: #be6a57d6;
+    
+}
+
+.alert-box{
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: red;
+}
+
+.alert{
+    color: rgb(24, 81, 24);
 }
