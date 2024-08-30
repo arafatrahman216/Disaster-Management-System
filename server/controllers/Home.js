@@ -18,9 +18,39 @@ const home = async(req, res) => {
         const locationIDs = locations.map(location => location.LocationID);
 
         const contacts = await EmergencyContact.find({ locationID: { $in: locationIDs } });
+        // console.log(runningIncidents);
+        // console.log(incidentIDs);
+        // console.log(locations);
+        // console.log(contacts);
+        
+        var incidentList = [];
+        var MapLocation = [];
+        for (var i = 0; i < runningIncidents.length; i++){
+            var incident = runningIncidents[i];
+            var location = locations.find(location => location.LocationID === incident.LocationID);
+            incidentList.push({
+                IncidentID: incident.IncidentID,
+                IncidentType: incident.IncidentType,
+                Description: incident.Description,
+                Location: location.Address,
+                DateReported: JSON.stringify(incident.DateReported).split('T')[0],
+                Urgency: incident.Urgency,
+                Status: incident.Status,
+                Longitude: location.Longitude,
+                Latitude : location.Latitude,
+            });
+            MapLocation.push({
+                position: [location.Latitude, location.Longitude],
+                popupText: incident.IncidentType
+            });
+
+        }
+        console.log(incidentList);
+        
+        
 
         // Step 4: Send the retrieved locations in the response
-        res.status(200).json({ runningIncidents, locations, contacts });
+        res.status(200).json({ incidentList, locations, contacts, MapLocation });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

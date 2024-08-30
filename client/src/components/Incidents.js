@@ -4,10 +4,25 @@ import locicon from '../assets/images/location.png';
 import { Map } from '../components';
 import { useDispatch } from "react-redux";
 import { changeRole, remove } from '../store/roleSlice';
+import { useEffect } from 'react';
 
 
 export const Incidents = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const [ incidents, setIncidents] = useState(null);
+    const [ locations , setLocations] = useState(null);
+
+    useEffect(() => {
+      fetch('http://localhost:5000/home')
+      .then(res => res.json())
+      .then(data => {
+        setIncidents(data);
+        setLocations(data.MapLocation);
+        console.log(data);
+        
+      })
+    }, []);
+
     const [DistrictIndex, setDistrictIndex] = useState(0);
     const Divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Mymensingh", "Rangpur"];
 
@@ -27,10 +42,7 @@ export const Incidents = () => {
     
     const [longitude, setLongitude] = useState(23.696789);
     const [latitude, setLatitude] = useState(90.399721);
-    const locations = [
-      { position: [23.7264, 90.3925], popupText: 'BUET' },
-      { position: [longitude, latitude], popupText: 'My location' }
-    ];
+    
 
     const getMyLocation = () => {
         if (locateOn) setlocateOn(false);
@@ -266,7 +278,10 @@ export const Incidents = () => {
 
     
     <h1 className='section-header'>Scan your area</h1>
-        <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={12.5} />
+        
+        { locations &&
+          <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={12.5} />
+        }
 
 
 
@@ -282,25 +297,19 @@ export const Incidents = () => {
             <th>Incident Status</th>
             <th>Urgency</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Flood</td>
-            <td>2021-09-01</td>
-            <td>Dhaka</td>
-            <td>Heavy Rainfall</td>
-            <td>Active</td>
-            <td>High</td>
-
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Earthquake</td>
-            <td>2021-09-02</td>
-            <td>Chattogram</td>
-            <td>7.8 Richter Scale</td>  
-            <td>Active</td>
-            <td>High</td>
-          </tr> 
+          {
+            incidents && incidents.incidentList && incidents.incidentList.map(incident => (
+              <tr>
+                <td>{incident.IncidentID}</td>
+                <td>{incident.IncidentType}</td>
+                <td>{incident.DateReported}</td>
+                <td>{incident.Location}</td>
+                <td>{incident.Description}</td>
+                <td>{incident.Status}</td>
+                <td>{incident.Urgency}</td>
+              </tr>
+            ))
+          }
         </table>
 
             </div>
