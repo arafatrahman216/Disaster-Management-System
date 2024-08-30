@@ -2,6 +2,7 @@ const Incident = require('../models/Incident');
 const Community = require('../models/Community');
 const Donation = require('../models/Donation');
 const Location = require('../models/Location');
+const EmergencyContact = require('../models/EmergencyContact');
 
 const home = async(req, res) => {
     try {
@@ -21,7 +22,7 @@ const home = async(req, res) => {
         // Step 4: Send the retrieved locations in the response
         res.status(200).json({ runningIncidents, locations, contacts });
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching running incidents or locations', error: error.message });
+        res.status(500).json({ error: error.message });
     }
     
 }
