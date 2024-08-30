@@ -10,7 +10,13 @@ require('dotenv').config();
 app.use(bodyParser.json());
 app.use(express.static('build'));
 app.use(express.json());
-app.use(cors()); 
+app.use(cors({
+    origin: 'http://localhost:3000', // Allow only this origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+}));
+
+
 require('./db/connect')
 
 //socket.io 

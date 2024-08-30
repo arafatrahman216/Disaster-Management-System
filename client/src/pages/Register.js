@@ -1,25 +1,50 @@
 import "../assets/CSS/Register.css";
 import { useState } from "react";
 import DMS from "../api/DMS";
+import { useNavigate } from "react-router-dom";
 
 const Register=()=>{
+    const navigate = useNavigate();
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [phnNumber,setPhnNumber]=useState("");
     const [thana,setThana]=useState("");
     const [district,setDistrict]=useState("");
     const [pass, setPass]=useState("");
+    const [address,setAddress]=useState("");
 
     async function sendRegInfo(){
         try{
-            const response=await DMS.post('./register',{
-                name,
-                email,
-                phnNumber,
-                thana,
-                district,
-                pass
-            })
+            const regInfo={
+                Name:name,
+                Email:email,
+                Phone:phnNumber,
+                Address:address + ", " + thana + ", " + district,
+                Password:pass,
+                UserType: ["affected"],
+                Available : true,
+                Community : [],
+                CreationTime : new Date().toISOString()
+            }
+            console.log(regInfo);
+            const response = await fetch("http://localhost:5000/auth/register",{    
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(regInfo)
+            });
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+            if(response.status === 201){
+                window.location.href = "/auth/login";                
+            }
+            else if(response.status === 500){
+                alert(data.error);
+            }
+
+
         }catch(err){
             console.log(err);
         }
@@ -71,6 +96,15 @@ const Register=()=>{
                     placeholder="Enter your district"
                     value={district}
                     onChange={(e)=>{setDistrict(e.target.value);}}
+                />
+            </div>
+            <div className="RegAddress">
+                <label>Address</label>
+                <input 
+                    type="text" 
+                    placeholder="Enter your address"
+                    value={address}
+                    onChange={(e)=>{setAddress(e.target.value);}}
                 />
             </div>
             <div className="RegPassword">
