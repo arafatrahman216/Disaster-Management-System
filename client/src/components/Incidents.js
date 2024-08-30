@@ -9,19 +9,11 @@ import { useEffect } from 'react';
 
 export const Incidents = () => {
     const dispatch = useDispatch();
+    const [AllLocations, setAllLocations] = useState(null);
     const [ incidents, setIncidents] = useState(null);
     const [ locations , setLocations] = useState(null);
 
-    useEffect(() => {
-      fetch('http://localhost:5000/home')
-      .then(res => res.json())
-      .then(data => {
-        setIncidents(data);
-        setLocations(data.MapLocation);
-        console.log(data);
-        
-      })
-    }, []);
+    
 
     const [DistrictIndex, setDistrictIndex] = useState(0);
     const Divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Mymensingh", "Rangpur"];
@@ -64,19 +56,61 @@ export const Incidents = () => {
 
      }
 
-     const submitIncident = () => {
+     const submitIncident = async () => {
         const incidentType = document.getElementById('IncidentType').value;
         const incidentDate = document.getElementById('IncidentDate').value;
-        const incidentLocation = document.getElementById('IncidentLocation').value;
+        const incidentLocation = document.getElementById('LocationID').value;
         const incidentDescription = document.getElementById('IncidentDescription').value;
         const affected = document.getElementById('Affected').value;
         const incidentStatus = document.getElementById('IncidentStatus').value;
         const urgency = document.getElementById('Urgency').value;
         console.log(incidentType, incidentDate, incidentLocation, incidentDescription, affected, incidentStatus, urgency);
+        const incident = {
+          LocationID:  incidentLocation,
+          IncidentType: incidentType,
+          Description: incidentDescription,
+          ReportedBy: localStorage.getItem('user').UserID,
+          DateReported: incidentDate,
+          Urgency: urgency,
+          Status: incidentStatus
+        }
+        await fetch('http://localhost:5000/incident/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(incident)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          window.location.reload();
+        })
+
+
       }
 
 
+      useEffect( () => {
+         fetch('http://localhost:5000/home')
+        .then(res => res.json())
+        .then(data => {
+          setIncidents(data);
+          const Maplocations = data.MapLocation;
+          Maplocations.push({position: [latitude, longitude], popupText: "You are here"});
+          console.log(Maplocations);
+          
+          setLocations(Maplocations);
+          console.log(data);
+          
+        })
 
+         
+        
+        
+      }, []);
+
+      
      
 
       const seelocationid=()=>{
@@ -119,7 +153,10 @@ export const Incidents = () => {
         <form id='location-form' className='location-form' style={{ display : locateOn? "inline-block": "none"}} >
             <div className="form-item">
             <label htmlFor="latitude">Latitude</label>
-            <input type='number' id="latitude" name="latitude" onChange={(e)=> setLatitude(e.target.value)} style={{ marginLeft: "55px"}} />
+            <input type='number' id="latitude" name="latitude" onChange={(e)=>{
+                setLatitude(e.target.value);
+                
+            }} style={{ marginLeft: "55px"}} />
             </div>
             <div className="form-item">
             <label htmlFor="longitude">Longitude</label>
@@ -194,8 +231,7 @@ export const Incidents = () => {
         <div className="form-item">
             <label htmlFor="LocationID">Location ID</label>
             <input type="number" id="LocationID" name="LocationID" style={{marginLeft:"82px"}} />
-            <button type='button' onClick={()=> seelocationid()} >See Location IDs
-            </button>
+            
           </div>
         <div className="form-item">
             
@@ -232,48 +268,7 @@ export const Incidents = () => {
           
         }}>Submit</button>
     </form>
-    <div id="locationModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Location Table</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Location ID</th>
-                        <th>Address</th>
-                        <th>Longitude</th>
-                        <th>Latitude</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Dhaka</td>
-                        <td>90.412518</td>
-                        <td>23.810331</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Chattogram</td>
-                        <td>91.783182</td>
-                        <td>22.356852</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Rajshahi</td>
-                        <td>88.604200</td>
-                        <td>24.374524</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Khulna</td>
-                        <td>89.563970</td>
-                        <td>22.845641</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    
     
 
     

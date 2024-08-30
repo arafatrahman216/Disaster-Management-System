@@ -77,8 +77,14 @@ const home = async(req, res) => {
         res.status(500).json({ error: error.message });
     }
     
+}  
+
+const getAllLocations = async (req, res)=>{
+    const AllLocations = await Location.find({});
+    res.json({AllLocations});
 }
 
 module.exports = {
-    home
+    home,
+    getAllLocations
 }

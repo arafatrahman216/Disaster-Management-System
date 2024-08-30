@@ -61,9 +61,13 @@ const createIncident= async(req, res) => {
                 ReportedBy, 
                 DateReported, 
                 Urgency, Status});
-
+                console.log(newIncident);
+                
             res.status(201).json({newIncident });
+
         } catch (error) {
+            console.log(error);
+            
             res.status(500).json({ error: error.message });
         }
 

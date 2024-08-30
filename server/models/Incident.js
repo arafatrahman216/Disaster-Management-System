@@ -36,7 +36,7 @@ const incidentSchema = new mongoose.Schema({
     },
     ReportedBy: {
         type: Number,
-        required: true
+        required: false
     },
     DateReported: {
         type: Date,
