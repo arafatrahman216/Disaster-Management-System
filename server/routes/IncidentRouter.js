@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const {createIncident, getIncident} = require('../controllers/Incident.js');
+const {getAllIncidents , createIncident , updateIncident} = require('../controllers/Incident');
 
-
-router.post('/create', createIncident);
-
-
-router.get('/get/:id', getIncident);
-
-
+router.get('' , getAllIncidents);
+router.post('/create' , createIncident);
+router.get('/:id' , updateIncident);
 
 module.exports = router;
