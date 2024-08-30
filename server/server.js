@@ -35,7 +35,7 @@ const io = new Server( server, { cors : { origin : '*'} });
 // );
  
 //Routes imported from routes/index.js file
-const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
+const { HomeRoute, AuthRouter, CommunityRouter,IncidentRoute } = require('./routes');
 
 //require('./middleware/auth')
 
@@ -45,6 +45,7 @@ const { HomeRoute, AuthRouter, CommunityRouter } = require('./routes');
 // })
 
 app.use('/home', HomeRoute);
+app.use('/incident', IncidentRoute);
 //console.log('HI');
 app.use('/auth', AuthRouter);
 //app.use('/community', CommunityRouter);
