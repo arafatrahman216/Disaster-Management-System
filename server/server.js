@@ -35,7 +35,7 @@ const io = new Server( server, { cors : { origin : '*'} });
 // );
  
 //Routes imported from routes/index.js file
-const { HomeRoute, AuthRouter, CommunityRouter,IncidentRoute } = require('./routes');
+const { HomeRoute, AuthRouter, CommunityRouter,IncidentRoute,MedicalRouter } = require('./routes');
 
 //require('./middleware/auth')
 
@@ -49,6 +49,8 @@ app.use('/incident', IncidentRoute);
 //console.log('HI');
 app.use('/auth', AuthRouter);
 //app.use('/community', CommunityRouter);
+
+app.use('/medical', MedicalRouter);
 
 const PORT =  process.env.PORT || 5000;
 
