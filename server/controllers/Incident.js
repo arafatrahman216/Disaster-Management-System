@@ -31,5 +31,5 @@ const createIncident= async(req, res) => {
 }
 
 module.exports = {
-    getIncident
+    getIncident, createIncident
 }
