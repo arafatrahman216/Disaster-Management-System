@@ -3,19 +3,27 @@ const Location = require('../models/Location');
 
 const getAllIncidents = async(req, res) => {
     try {
+        // Fetch all incidents
         const incidents = await Incident.find({});
-
-        const incidentsWithLocation = await Promise.all(
-            incidents.map(async (incident) => {
-            const location = await Location.findById(incident.locationID);
+        
+        // Fetch all locations
+        const locations = await Location.find({});
+        
+        // Create a map of location ID to location document for quick lookup
+        const locationMap = locations.reduce((map, location) => {
+            map[location.LocationID] = location;
+            return map;
+        }, {});
+        
+        // Combine incidents with their corresponding locations
+        const incidentsWithLocation = incidents.map(incident => {
             return {
-                ...incident._doc, // Spread the incident details
-                location, // Add the location details
+                ...incident.toObject(),
+                Location: locationMap[incident.LocationID] || null
             };
-            })
-        );
-
-        res.status(200).json({incidents: incidentsWithLocation});
+        });
+        
+        res.status(200).json({ incidents: incidentsWithLocation });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
