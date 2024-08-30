@@ -1,21 +1,24 @@
-table {
+.incident-table{
     width: 90%;
     display:table;
     margin-left: 30px;
     margin-top: 20px;
     margin-bottom: 15px;
     border-collapse: collapse;
+    
     border-spacing: 0;
-    border: 1px solid #ddd;
+    border: 1px solid #cece09;
     text-align: center;
     tr{
         width: 100%;
         border: 1px solid #cece09;
         background-color: #2ee35e;
     }
+    tr:hover{
+        background-color: #36f1d2;
+    }
     
     th{
-        
         filter:drop-shadow(1px 1px 1px #9b2828);
         border: 1px solid #cece09;
         padding: 8px;
@@ -27,17 +30,11 @@ table {
         padding: 8px;
         background-color: #f2f2f237;
     }
-    
 }
 
-
-
-.icon{
+.loc-icon{
     width: 20px;
     height: 20px;
     margin-left: 10px;
-}
-
-.clickable{
-    cursor: pointer;
+    margin-right: 10px;
 }

@@ -4,6 +4,7 @@ const {register , login} = require('../controllers/Authentication');
 
 router.post('/login', login) 
 
+
 router.post('/register', register)
 
 module.exports = router;
