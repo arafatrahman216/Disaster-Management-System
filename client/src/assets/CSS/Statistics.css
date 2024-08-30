@@ -70,6 +70,7 @@ h3{
   }
   
   /* Medium devices (≥768px) */
+
   @media (min-width: 605px) {
     .col-md-6 {
       flex: 0 0 30%;
@@ -99,6 +100,7 @@ h3{
   .row {
     display: flex;
     flex-wrap: wrap;
+
     justify-content: center;
     
   }

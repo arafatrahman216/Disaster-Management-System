@@ -8,7 +8,7 @@ const locationSchema = new mongoose.Schema({
 
     IncidentID: {
         type: [Number],
-        required: true
+        required: true  
     },
     
     Latitude: {

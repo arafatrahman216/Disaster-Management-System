@@ -13,9 +13,13 @@ const resourceSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    QuantityType : {
+        type: String,
+        required : true
+    },
     LocationID: {
         type: Number,
-        required: true
+        required: false
     },
     Status: {
         type: String,

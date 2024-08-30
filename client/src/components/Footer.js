@@ -2,8 +2,10 @@ import React from 'react'
 import Logo from '../assets/images/dms-logo-transparent.png';
 import '../assets/CSS/Footer.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+  const loggedIn = useSelector(state => state.roleState.loggedIn);
   return (
     <footer className="footer">
       <div className="container">
@@ -49,6 +51,10 @@ const Footer = () => {
                 <td></td>
 
             </tr>
+            {
+              loggedIn &&
+              <tr> <Link to="/auth/login">Logout</Link></tr>
+            }
           </tbody>
         </table>
 

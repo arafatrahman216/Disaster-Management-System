@@ -1,5 +1,6 @@
 @keyframes slidy {
     0% { left: 0%; }
+
     19% { left: 0%; }
     24% { left: -100%; }
     43% { left: -100%; }

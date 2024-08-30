@@ -1,0 +1,56 @@
+body{
+    font-family: sans-serif;
+}
+
+#root{
+    width:100vw;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.AuthButtons{
+    display:flex;
+    justify-content: center;
+}
+
+.AuthLoginButton{
+    height:60px;
+    width:125px;
+    margin:40px;
+    font-size: 30px;
+    border-radius:5px;
+    background-color:rgb(151, 237, 208) ;
+    border:none;
+}
+
+.AuthLoginButton:hover{
+    background-color: rgb(69, 199, 156);
+    color:white;
+}
+
+.AuthRegisterButton{
+    height:60px;
+    width:125px;
+    margin:40px;
+    font-size: 30px;
+    border-radius:5px;
+    background-color:rgb(151, 237, 208) ;
+    border:none;
+}
+
+.AuthRegisterButton:hover{
+    background-color: rgb(69, 199, 156);
+    color:white;
+}
+
+.AuthButtons button{
+    cursor:pointer;
+    transition: transform 0.2s,background-color 0.3s,color 0.3s ease-out 0s;
+    box-shadow: 0px 0px 10px 13px rgba(0, 0, 0, 0.124);
+}
+
+.AuthButtons button:active{
+    transform:translateY(10px);
+    box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.245);
+}

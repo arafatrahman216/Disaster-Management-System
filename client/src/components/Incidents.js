@@ -4,10 +4,17 @@ import locicon from '../assets/images/location.png';
 import { Map } from '../components';
 import { useDispatch } from "react-redux";
 import { changeRole, remove } from '../store/roleSlice';
+import { useEffect } from 'react';
 
 
 export const Incidents = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const [AllLocations, setAllLocations] = useState(null);
+    const [ incidents, setIncidents] = useState(null);
+    const [ locations , setLocations] = useState(null);
+
+    
+
     const [DistrictIndex, setDistrictIndex] = useState(0);
     const Divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barishal", "Sylhet", "Mymensingh", "Rangpur"];
 
@@ -27,10 +34,7 @@ export const Incidents = () => {
     
     const [longitude, setLongitude] = useState(23.696789);
     const [latitude, setLatitude] = useState(90.399721);
-    const locations = [
-      { position: [23.7264, 90.3925], popupText: 'BUET' },
-      { position: [longitude, latitude], popupText: 'My location' }
-    ];
+    
 
     const getMyLocation = () => {
         if (locateOn) setlocateOn(false);
@@ -52,6 +56,78 @@ export const Incidents = () => {
 
      }
 
+     const submitIncident = async () => {
+        const incidentType = document.getElementById('IncidentType').value;
+        const incidentDate = document.getElementById('IncidentDate').value;
+        const incidentLocation = document.getElementById('LocationID').value;
+        const incidentDescription = document.getElementById('IncidentDescription').value;
+        const affected = document.getElementById('Affected').value;
+        const incidentStatus = document.getElementById('IncidentStatus').value;
+        const urgency = document.getElementById('Urgency').value;
+        console.log(incidentType, incidentDate, incidentLocation, incidentDescription, affected, incidentStatus, urgency);
+        const incident = {
+          LocationID:  incidentLocation,
+          IncidentType: incidentType,
+          Description: incidentDescription,
+          ReportedBy: localStorage.getItem('user').UserID,
+          DateReported: incidentDate,
+          Urgency: urgency,
+          Status: incidentStatus
+        }
+        await fetch('http://localhost:5000/incident/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(incident)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          window.location.reload();
+        })
+
+
+      }
+
+
+      useEffect( () => {
+         fetch('http://localhost:5000/home')
+        .then(res => res.json())
+        .then(data => {
+          setIncidents(data);
+          const Maplocations = data.MapLocation;
+          Maplocations.push({position: [latitude, longitude], popupText: "You are here"});
+          console.log(Maplocations);
+          
+          setLocations(Maplocations);
+          console.log(data);
+          
+        })
+
+         
+        
+        
+      }, []);
+
+      
+     
+
+      const seelocationid=()=>{
+        var modal = document.getElementById("locationModal");
+        var span = document.getElementsByClassName("close-btn")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        }
+      }
+
+
      const setLocation=()=>{
         
         var ExLoc= document.getElementById("ExLoc").value +", " + document.getElementById("Village").value +", "+
@@ -62,7 +138,7 @@ export const Incidents = () => {
      }
 
   return (
-    <>
+    <div className='inc-container'>
 
         <h1 className='section-header' > Your Location </h1>
         <div className="location-box">
@@ -77,7 +153,10 @@ export const Incidents = () => {
         <form id='location-form' className='location-form' style={{ display : locateOn? "inline-block": "none"}} >
             <div className="form-item">
             <label htmlFor="latitude">Latitude</label>
-            <input type='number' id="latitude" name="latitude" onChange={(e)=> setLatitude(e.target.value)} style={{ marginLeft: "55px"}} />
+            <input type='number' id="latitude" name="latitude" onChange={(e)=>{
+                setLatitude(e.target.value);
+                
+            }} style={{ marginLeft: "55px"}} />
             </div>
             <div className="form-item">
             <label htmlFor="longitude">Longitude</label>
@@ -118,20 +197,86 @@ export const Incidents = () => {
             <input type="text" id="ExLoc" name="ExLoc"  />
             </div>
             
-            <button onClick={(e)=>{
+            <button className='submit-btn' onClick={(e)=>{
               e.preventDefault()
               setLocation();
             }} >Submit</button>
         </form>
     </div>
 
-    <div className="alert-box">
+    { myLocation &&
+      <div className="alert-box">
         <h1 >Alert !</h1>
         <p className='alert'>There are some incidents reported in your area. Please stay safe.</p>
     </div>
+    }
+
+    <form className='location-form' style={{display:"inline-block"}}>
+        <h1 className='section-header'>Report an Incident</h1>
+        <div className="form-item">
+            <label htmlFor="IncidentType">Incident Type</label>
+            <select id="IncidentType" name="IncidentType" style={{marginLeft:"66px"}}>
+                <option value="Flood">Flood</option>
+                <option value="Earthquake">Earthquake</option>
+                <option value="Fire">Fire</option>
+                <option value="Cyclone">Cyclone</option>
+                <option value="Accident">Accident</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div className="form-item">
+            <label htmlFor="IncidentDate" >Incident Date</label>
+            <input type="datetime-local" id="IncidentDate" name="IncidentDate" style={{marginLeft:"66px"}} />
+        </div>
+        <div className="form-item">
+            <label htmlFor="LocationID">Location ID</label>
+            <input type="number" id="LocationID" name="LocationID" style={{marginLeft:"82px"}} />
+            
+          </div>
+        <div className="form-item">
+            
+            <label htmlFor="IncidentLocation">Incident Location</label>
+            <input type="text" id="IncidentLocation" name="IncidentLocation" style={{marginLeft:"34px"}} />
+            </div>
+            
+        <div className="form-item">
+            
+            <label htmlFor="IncidentDescription">Incident Description</label>
+            <input id="IncidentDescription" name="IncidentDescription" style={{marginLeft:"10px"}}  />
+        </div>
+        <div className="form-item">
+            <label htmlFor="Affected">Affected Individuals</label>
+            <input type="number" id="Affected" name="Affected" style={{marginLeft:"12px"}} />
+        </div>
+        <div className="form-item">
+            <label htmlFor="IncidentStatus">Incident Status</label>
+            <select id="IncidentStatus" name="IncidentStatus" style={{marginLeft:"51px"}}>
+              <option value="Running">Running</option>
+              <option value="Expired">Expired</option>
+            </select>
+        </div>
+        <div className="form-item">
+            <label htmlFor="Urgency">Urgency</label>  
+            <select id="Urgency" name="Urgency" style={{marginLeft:"107px"}}>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+        <button type='button' className='submit-btn' onClick={()=>{
+          submitIncident();
+          
+        }}>Submit</button>
+    </form>
+    
+    
+
     
     <h1 className='section-header'>Scan your area</h1>
-        <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={12.5} />
+        
+        { locations &&
+          <Map locations={locations} longitude={longitude} latitude={latitude} defaultZoom={12.5} />
+        }
 
 
 
@@ -147,27 +292,21 @@ export const Incidents = () => {
             <th>Incident Status</th>
             <th>Urgency</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Flood</td>
-            <td>2021-09-01</td>
-            <td>Dhaka</td>
-            <td>Heavy Rainfall</td>
-            <td>Active</td>
-            <td>High</td>
-
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Earthquake</td>
-            <td>2021-09-02</td>
-            <td>Chattogram</td>
-            <td>7.8 Richter Scale</td>  
-            <td>Active</td>
-            <td>High</td>
-          </tr> 
+          {
+            incidents && incidents.incidentList && incidents.incidentList.map(incident => (
+              <tr>
+                <td>{incident.IncidentID}</td>
+                <td>{incident.IncidentType}</td>
+                <td>{incident.DateReported}</td>
+                <td>{incident.Location}</td>
+                <td>{incident.Description}</td>
+                <td>{incident.Status}</td>
+                <td>{incident.Urgency}</td>
+              </tr>
+            ))
+          }
         </table>
 
-            </>
+            </div>
   )
 }

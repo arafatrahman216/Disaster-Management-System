@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.RegForm {
+    background-color: #ffffff7f;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+    width:400px;
+    animation-name: slideReg;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    margin:3rem;
+}
+
+.RegTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    border-bottom:2px solid #020202;
+}
+
+ .RegForm div {
+    margin-bottom: 15px;
+}
+
+.RegForm label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.RegForm input[type="text"],
+.RegForm input[type="password"] {
+    height:3rem;
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.RegForm input[type="text"]:focus,
+.RegForm input[type="password"]:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.RegForm .RegName,
+.RegForm .RegEmail,
+.RegForm .RegPhoneNumber,
+.RegForm .RegThana,
+.RegForm .RegDistrict,
+.RegForm .RegPassword {
+    display: flex;
+    flex-direction: column;
+}
+
+.RegForm input::placeholder {
+    color: #999;
+}
+
+.RegForm .RegButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RegButton{
+    height:50px;
+    width:100px;
+    font-size:20px;
+    font-weight: 700;
+    color:rgba(0, 0, 0, 0.678);
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.067);
+    background-color: rgb(151, 237, 208);
+    border-radius: 5px;
+    border:none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.RegButton:hover{
+    background-color: rgb(69, 199, 156);
+}
+
+.RegButton:active{
+    box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.199);
+}
+
+@keyframes slideReg {
+    from{
+        transform: translateX(2000px);
+    }
+    to{
+        transform:translateX(0px);
+    }
+}

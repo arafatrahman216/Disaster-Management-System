@@ -15,7 +15,6 @@ const incidentSchema = new mongoose.Schema({
 
     ApproximateaffectedCount : {
         type: Number,
-        required: true,
         default: 0
     },
 
@@ -34,11 +33,10 @@ const incidentSchema = new mongoose.Schema({
     },
     CommunityID: {
         type: Number,
-        required: true
     },
     ReportedBy: {
         type: Number,
-        required: true
+        required: false
     },
     DateReported: {
         type: Date,

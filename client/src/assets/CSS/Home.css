@@ -3,6 +3,7 @@ table {
     display:table;
     margin-left: 30px;
     margin-top: 20px;
+
     margin-bottom: 15px;
     border-collapse: collapse;
     border-spacing: 0;
@@ -10,6 +11,7 @@ table {
     text-align: center;
     tr{
         width: 100%;
+
         border: 1px solid #cece09;
         background-color: #2ee35e;
     }
@@ -36,6 +38,7 @@ table {
     width: 20px;
     height: 20px;
     margin-left: 10px;
+
 }
 
 .clickable{

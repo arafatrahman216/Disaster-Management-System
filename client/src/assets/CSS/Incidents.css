@@ -1,3 +1,8 @@
+.section-header{
+    display: block;
+}
+
+
 .incident-table{
     width: 90%;
     display:table;
@@ -73,6 +78,12 @@
     margin-right: 5%;
 }
 
+.submit-btn{
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 50%;
+}
+
 button{
     border-radius: 10px;
     padding: 5px;
@@ -109,3 +120,54 @@ option{
 .alert{
     color: rgb(24, 81, 24);
 }
+
+
+/* Basic styles for the button */
+.modal-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Close Button */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
