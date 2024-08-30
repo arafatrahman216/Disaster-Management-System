@@ -1,5 +1,5 @@
-import express from 'express';
-import HelpCenter from '../models/HelpCenter';
+const express = require('express');
+const HelpCenter = require('../models/HelpCenter');
 
 const router  = express.Router();
 
@@ -7,8 +7,9 @@ const router  = express.Router();
 //get shelter or hospital by id
 
 
-router.get('/medical/:id', async(req,res) =>{
+router.get('/:id', async(req,res) =>{
     try{
+        console.log("Hello");
         const {id} = req.params;
         const Hlpcenter =  await HelpCenter.findById(id);
 
@@ -26,7 +27,7 @@ router.get('/medical/:id', async(req,res) =>{
 });
 
 
-router.post('/medical/add', async(req,res) =>{
+router.post('/add', async(req,res) =>{
     try{
         if(
             !req.body.CenterID||
@@ -62,7 +63,7 @@ router.post('/medical/add', async(req,res) =>{
 });
 
 
-router.put('/medical/:id/update', async(req,res) =>{
+router.put('/:id/update', async(req,res) =>{
     try{
         const {id} = req.params;
         if(

@@ -49,9 +49,9 @@ app.use('/incident', IncidentRoute);
 //console.log('HI');
 app.use('/auth', AuthRouter);
 //app.use('/community', CommunityRouter);
-
+console.log('HI');
 app.use('/medical', MedicalRouter);
-
+console.log('Bye');
 const PORT =  process.env.PORT || 5000;
 
 server.listen(PORT, () => {
