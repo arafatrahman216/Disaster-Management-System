@@ -1,9 +1,11 @@
 import Statistics from "../components/Statistics";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../assets/CSS/Profile.css';
 import { useSelector,useDispatch } from "react-redux";
 import '../assets/CSS/Incidents.css';
 import {useNavigate} from 'react-router-dom';
+import '../assets/CSS/makeAnnouncement.css';
+import { addAnnouncement } from "../redux/reducer/announcementSlice";
 
 const Admin=function (){
     let [Name,setName]=useState('aveerup');
@@ -16,9 +18,19 @@ const Admin=function (){
     let [profileInfoThana,setProfileInfoThana]=useState(false);
     let [profileInfoDistrict,setProfileInfoDistrict]=useState(false);
     let [profileInfoPhnNum,setProfileInfoPhnNum]=useState(false);
+    let [makeAnnActive,setMakeAnnActive]=useState(false);
+    let [annTextAreaHeight,setAnnTextAreaHeight]=useState('3rem');
+    let [announcement,setAnnouncement]=useState('');
+
+    const announcements = useSelector((state) => state.announcementReducer.announcements);
+
+    useEffect(() => {
+        console.log("Current announcements:", announcements);
+    }, [announcements]); 
 
     let incidents=useSelector((state)=>state.incidentReducer.incidents);
-    let anouncements=useSelector((state)=>state.anouncementReducer.anouncements);
+
+    const dispatch=useDispatch();
 
     const handleDoubleClick = (field) => {
         switch(field) {
@@ -52,6 +64,28 @@ const Admin=function (){
         if(e.target.className==="seeCommunityButton"){
             navigate(`../../community/${e.target.id}`)
         }
+    }
+
+    const writeAnnouncement=()=>{
+        setMakeAnnActive(true);
+    }
+
+    const publishAnnouncement=()=>{
+        const userId='6';
+        console.log(announcement);
+        dispatch(addAnnouncement({userId,announcement}));
+    }
+
+    const resizeAnnTextArea1=(event)=>{
+        const textarea = event.target;
+        textarea.style.height = 'auto';
+    }
+
+    const resizeAnnTextArea2=(event)=>{
+        const textarea = event.target;
+        const newHeight = `${textarea.scrollHeight}px`;
+    
+        setAnnTextAreaHeight(newHeight);
     }
 
     return(
@@ -112,13 +146,25 @@ const Admin=function (){
                 {
                     incidents.map(
                         (incident)=>
-                            <div id={incident.incidentId} class="incident"><span>{incident.incidentName}</span><button id={incident.incidentId} class={incident.commId?"createCommunityButton":"seeCommunityButton"} onClick={(e)=>{console.log(e); incidentButtonHandler(e);}}>{incident.commId?"create community":"see community"}</button></div>
+                            <div id={incident.incidentId} class="incident" ><span>{incident.incidentName}</span><button id={incident.incidentId} class={incident.commId?"createCommunityButton":"seeCommunityButton"} onClick={(e)=>{console.log(e); incidentButtonHandler(e);}}>{incident.commId?"create community":"see community"}</button></div>
                     )
                 }
             </div>
 
-            <div class="makeAnouncement">
-
+            <div class="makeAnnouncement">
+                <div class='makeAnnHeader'>
+                    <span>Make an Announcement</span>
+                    {
+                        makeAnnActive?
+                            (<button class='publishAnnButton' onClick={()=>{publishAnnouncement()}}>Publish</button>):
+                            (<button class='makeAnnButton' onClick={()=>{writeAnnouncement()}}>Write one</button>)
+                    }
+                </div>
+                {
+                    makeAnnActive?
+                        (<textarea class="AnnTextArea" style={{height:`${annTextAreaHeight}`}} value={announcement} onChange={(e)=>{setAnnouncement(e.target.value); resizeAnnTextArea1(e); resizeAnnTextArea2(e);}}></textarea>):
+                        null
+                }
             </div>
         </>
     );

@@ -1,29 +1,59 @@
-import {createSlice} from '@reduxjs/toolkit';
+// import {createSlice} from '@reduxjs/toolkit';
+// import { nanoid } from 'nanoid';
+
+// const initialState={
+//     announcements:[]
+// }
+
+// const announcementSlice=createSlice({
+//     name:'announcement',
+//     initialState,
+//     reducers:{
+//         addAnnouncement:(state,action)=>{
+//             const announcement={
+//                 id:nanoid(),
+//                 author:action.payload.userId,
+//                 text:action.payload.announcement
+//             }
+//             state.announcements.push(announcement);
+//         },
+//         removeAnnouncement:(state,action)=>{
+//             state.announcements=state.announcements.filter(
+//                 (announcement)=>announcement.id!=action.payload.id
+//             )
+//         }
+//     }
+// })
+
+// export const {addAnnouncement,removeAnnouncement}=announcementSlice.actions;
+// export default announcementSlice.reducer;
+
+import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
-const initialState={
-    anouncements:[]
-}
+const initialState = {
+    announcements: []
+};
 
-const anouncementSlice=createSlice({
-    name:'anouncement',
+const announcementSlice = createSlice({
+    name: 'announcement',
     initialState,
-    reducers:{
-        addAnouncement:(state,action)=>{
-            const anouncement={
-                id:nanoid(),
-                author:action.payload.userId,
-                text:action.payload.anouncement
-            }
-            state.anouncements.push(anouncement);
+    reducers: {
+        addAnnouncement: (state, action) => {
+            const announcement = {
+                id: nanoid(), // generates a unique ID
+                author: action.payload.userId, // gets userId from payload
+                text: action.payload.announcement // gets announcement text from payload
+            };
+            state.announcements.push(announcement);
         },
-        removeAnouncement:(state,action)=>{
-            state.anouncements=state.anouncements.filter(
-                (anouncement)=>anouncement.id!=action.payload.id
-            )
+        removeAnnouncement: (state, action) => {
+            state.announcements = state.announcements.filter(
+                (announcement) => announcement.id !== action.payload.id
+            );
         }
     }
-})
+});
 
-export const {addAnouncement,removeAnouncement}=anouncementSlice.actions;
-export default anouncementSlice.reducer;
+export const { addAnnouncement, removeAnnouncement } = announcementSlice.actions;
+export default announcementSlice.reducer;

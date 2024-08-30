@@ -1,13 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit'
 import loggedInReducer from '../reducer/loggedInSlice'
 import incidentReducer from '../reducer/incidentSlice'
-import anouncementReducer from '../reducer/announcementSlice'
+import announcementReducer from '../reducer/announcementSlice'
 
 export const store=configureStore({
     reducer:{
         loggedInReducer,
         incidentReducer,
-        anouncementReducer
+        announcementReducer
     }
 })
 

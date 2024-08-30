@@ -5,6 +5,7 @@ import { Header } from '../components/Header';
 import Map from '../components/Map';
 import {Auth} from '../pages/Auth';
 import Profile from '../pages/Profile';
+import Announcement from '../pages/Announcement';
 
 export const AllRoutes = () => {
     const username= 'Arafat';
@@ -27,6 +28,7 @@ export const AllRoutes = () => {
         <Route path="/profile/:id" element={<Profile/>}/>
         <Route path='/community/chat' element={<h1>chat</h1>} />
         <Route path='/community/:id' element={<h1>community</h1>}/>
+        <Route path='/announcements' element={<Announcement/>} />
         <Route path='*' element={<h1>404 ! Page Not Found</h1>} />
        </Routes></>
   )

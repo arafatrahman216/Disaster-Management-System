@@ -1,7 +1,7 @@
 .incidents{
     width:80%;
     min-width: 700px;
-    height:400px;
+    height:500px;
     display:flex;
     flex-direction: column;
     margin:4rem 0rem 4rem 0rem;
@@ -24,7 +24,7 @@
     padding-bottom: 1rem;
     padding-left: 2rem;
     margin:.5rem;
-    background-color: rgba(255, 255, 255, 0.916);
+    background-color: rgba(252, 211, 77, 0.835);
     border-radius: .5rem;
     position:sticky;
     top:.5rem;
