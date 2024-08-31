@@ -66,6 +66,20 @@
     background-color: rgba(27, 86, 14, 0.635);
 }
 
+.AnnTitleDiv{
+    width:100%;
+    display:flex;
+    align-items: center;
+}
+
+.AnnTitleDiv span{
+    display:block;
+    font-size:1.5rem;
+    font-weight: 700;
+    width:20%;
+    text-align: center;
+}
+
 .AnnTextArea{
     margin:1rem;
     width:70%;

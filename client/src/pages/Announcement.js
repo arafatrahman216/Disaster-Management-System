@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
 const Announcement=function(){
     const [announcements,setAnnouncements]=useState([]);
     const tempAnnouncements=useSelector((state)=>state.announcementReducer.announcements);
-    setAnnouncements(tempAnnouncements);
+    useEffect(()=>{
+        setAnnouncements(tempAnnouncements);
+    },[])
     console.log(announcements);
     return(
         <>

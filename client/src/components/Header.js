@@ -15,7 +15,7 @@ export const Header= () => {
             <ul class="flex">
                 <li><Link>Incidents</Link></li>
                 <li><Link>Community</Link></li>
-                <li><Link>Announcements</Link>
+                <li><Link to='/announcements'>Announcements</Link>
                 </li>
                 <li><Link>Guidelines</Link></li>
                 <li><Link>Donate</Link></li>

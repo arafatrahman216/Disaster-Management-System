@@ -19,14 +19,8 @@ const Admin=function (){
     let [profileInfoDistrict,setProfileInfoDistrict]=useState(false);
     let [profileInfoPhnNum,setProfileInfoPhnNum]=useState(false);
     let [makeAnnActive,setMakeAnnActive]=useState(false);
-    let [annTextAreaHeight,setAnnTextAreaHeight]=useState('3rem');
     let [announcement,setAnnouncement]=useState('');
-
-    const announcements = useSelector((state) => state.announcementReducer.announcements);
-
-    useEffect(() => {
-        console.log("Current announcements:", announcements);
-    }, [announcements]); 
+    let [AnnTitle,setAnnTitle]=useState('');
 
     let incidents=useSelector((state)=>state.incidentReducer.incidents);
 
@@ -72,20 +66,15 @@ const Admin=function (){
 
     const publishAnnouncement=()=>{
         const userId='6';
-        console.log(announcement);
-        dispatch(addAnnouncement({userId,announcement}));
+        const headline=AnnTitle;
+        console.log(announcement+' '+headline);
+        dispatch(addAnnouncement({userId,headline,announcement}));
     }
 
-    const resizeAnnTextArea1=(event)=>{
+    const resizeAnnTextArea=(event)=>{
         const textarea = event.target;
         textarea.style.height = 'auto';
-    }
-
-    const resizeAnnTextArea2=(event)=>{
-        const textarea = event.target;
-        const newHeight = `${textarea.scrollHeight}px`;
-    
-        setAnnTextAreaHeight(newHeight);
+        textarea.style.height=`${textarea.scrollHeight}px`;
     }
 
     return(
@@ -162,7 +151,7 @@ const Admin=function (){
                 </div>
                 {
                     makeAnnActive?
-                        (<textarea class="AnnTextArea" style={{height:`${annTextAreaHeight}`}} value={announcement} onChange={(e)=>{setAnnouncement(e.target.value); resizeAnnTextArea1(e); resizeAnnTextArea2(e);}}></textarea>):
+                        (<><div class='AnnTitleDiv'><span>Title</span><textarea class='AnnTextArea AnnTitleTextArea' placeholder="Write the topic of your announcement..." value={AnnTitle} onChange={(e)=>{setAnnTitle(e.target.value);}}></textarea></div><textarea class="AnnTextArea" placeholder='Announcement ...' value={announcement} onChange={(e)=>{setAnnouncement(e.target.value); resizeAnnTextArea(e); }}></textarea></>):
                         null
                 }
             </div>

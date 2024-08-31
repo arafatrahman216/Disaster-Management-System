@@ -43,6 +43,7 @@ const announcementSlice = createSlice({
             const announcement = {
                 id: nanoid(), // generates a unique ID
                 author: action.payload.userId, // gets userId from payload
+                headline:action.payload.headline,
                 text: action.payload.announcement // gets announcement text from payload
             };
             state.announcements.push(announcement);
