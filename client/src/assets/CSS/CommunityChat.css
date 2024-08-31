@@ -1,0 +1,123 @@
+.chatbox-container{
+    width: 70%;
+    min-height: 50vh;  
+    max-height: 70vh; 
+    background-color: rgb(239 68 68);
+    margin-left: 5%;
+    border-radius: 20px;
+    display: block;
+    
+}
+
+.chat-header{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    color: whitesmoke;
+}
+
+.chat-header-underline{
+    width: 80%;
+    height: 1px;
+    margin: auto;
+    margin-top: 0;
+    background-color: whitesmoke;
+    box-shadow: 2px blue;
+}
+
+@media (max-width: 768px) {
+    .chat-header{
+        font-size: medium;
+    }
+    .chatbox-container{
+        width: 90%;
+    }
+  }
+
+  .message-container{
+    font-size: large;
+    padding-left: 10px;
+    margin-left: 5px;
+    display: block;
+    margin-top: 5px;
+  }
+
+  
+  .chat-person{
+    border-radius: 30px;
+    width: 17px;
+    height: 17px;
+    border: 1px solid white;
+    margin-right: 5px;
+
+  }
+  
+  .message{
+    display: inline-block;
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid rgb(138, 190, 198);
+    background-color:  rgb(253 186 116);
+    padding-left: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    text-wrap:wrap;
+  }
+  
+   
+  
+  .chatbox{
+    margin-top: 10px;
+    overflow-y: scroll;
+    display: block ;
+    max-height: 60vh;
+    overflow-wrap: normal;
+    
+    
+  }
+
+  span{
+    font-size: small;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: top;
+
+  }
+
+  .time{
+    font-size:x-small;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align:end;
+    display: flex;
+    align-self:flex-end;
+    vertical-align: bottom;
+  }
+
+  .chatbox-container .input-area{
+    width: 90%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+    vertical-align: bottom;
+  }
+
+  .input-text{
+    width: 95%;
+    border-radius: 10px;
+    height: 20px;
+  }
+
+  .sendMessage{
+    background-color: sandybrown;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+  }
+
+  .sendMessage:hover{
+    background-color: salmon;
+  }

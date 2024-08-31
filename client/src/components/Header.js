@@ -5,19 +5,16 @@ import Logo from '../assets/images/dms-logo-black.png';
 import notification_icon_on from '../assets/images/notification_on.png';
 import notification_icon from '../assets/images/notification.png';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 export const Header= () => {
-  const navigate = useNavigate();
-  const loggedIn = useSelector(state => state.roleState.loggedIn);
-  const isAdmin = useSelector(state => state.roleState.isAdmin);
+
   const [notIcon, setNotIcon] = useState(notification_icon_on);
   const [showNotification, setShowNotification] = useState('none');
   const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState(false);
   console.log(location.pathname.split("/"));
-  const navBars= ['.nav-incidents','.nav-communities','.nav-announcements','.nav-medicals','.nav-donate' ];
+  const navBars= ['.nav-incidents','.nav-communities','.nav-announcements','.nav-medicals','.nav-donate','.nav-login' ];
 
   const SetActive= (command)=>{
       navBars.forEach((bars)=>{
@@ -80,28 +77,8 @@ export const Header= () => {
                   <Link to='/donate'>Donate</Link></li>
                 { !loggedIn &&
                   <li className='nav-login' >
-                  <button type="button" className="header-login" 
-                  onClick={()=> {
-                    navigate('/auth');
-                  }}
-                  >Login/Register</button></li>
-                
+                  <button type="button" className="header-login">Login/Register</button></li>
                 }
-                {
-                  isAdmin && loggedIn &&
-                  <li className='nav-admin' >
-                  <Link to='/admin'>Admin</Link></li>
-                }
-                {
-                  !isAdmin && loggedIn &&
-                  <li className='nav-login' >
-                  <button type="button" className="header-login" 
-                  onClick={()=> {
-                    navigate('/auth');
-                  }}
-                  >LogOut</button></li>                  
-                }
-                
 
             </ul>
         </div>
